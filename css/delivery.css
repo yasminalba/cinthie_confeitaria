@@ -1,0 +1,230 @@
+body{
+      font-family: Arial, Helvetica, sans-serif;
+      background-color:#ebe6c0;
+      margin:0%;
+      text-align: justify;
+    }
+    header{
+        background-color:#000000;
+        padding: 20px 0px;
+        margin: 0px;
+        color: #E8C766;
+    }
+
+    nav{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding-bottom: 10px;
+    }
+
+    .menu{
+      display: flex;
+      gap: 25px; 
+      border: #C9A227;
+    }   
+
+    .menu a{
+      color: #F5EFE0;
+      text-decoration: none;
+      font-size: 13px;
+     
+    } 
+    .menu .delivery{
+      color: #C9A227;
+    }
+    .botao-whatsapp{
+      display: inline-block;
+      background-color: #C9A227;
+      color: #000000;
+      text-decoration: none;
+      font-size: 12px;
+      border-radius: 8px;
+      padding: 10px 18px;
+      width: 100px;
+      text-align: center;
+    } 
+    .linha-divisoria{
+    border-bottom: 1px solid rgba(232, 199, 102, 0.3);
+    width: 100%;
+    } 
+    .banner{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 100px;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 60px 0;
+    } 
+    .texto h1{
+      color: #F5EFE0;
+      font-family: Georgia, 'Times New Roman', Times, serif;
+      font-size: 42px;
+      font-weight: normal;
+      max-width: 600px;
+    }
+    .texto p{
+      color: #F5EFE0;
+      font-size: 17px;
+    } 
+    .texto .informacao{
+        color: #C9A227;
+        font-size: 14px;
+        margin-bottom: 15px;
+    }
+    .botao-principal{
+      display: inline-block;
+      background-color: #C9A227;
+      color: #0D0D0D;
+      padding: 12px 20px;
+      text-decoration: none;
+      font-size: 13px;
+      border-radius: 8px;
+    }
+    .grade{
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 30px;
+      margin: 60px auto;
+      padding: 0 20px;
+      padding: 20px 20px 40px 20px;
+      max-width: 1200px;
+    }
+    .info{
+      background-color: #F5EFE0;
+      border-radius: 20px;
+      padding: 35px 40px;
+      box-shadow: 0 4px 12px rgba(172, 150, 116, 0.2);
+    }
+    .info .icone{
+      color:#3D2B1F;
+      display: block;
+      width: 28px;
+      height: 28px;
+      margin-bottom: 15px;
+    }
+    .info h3{
+      color: #3D2B1F;
+      font-family: Georgia, 'Times New Roman', Times, serif;
+      font-size: 17px;
+      font-weight: normal;
+      margin-bottom: 8px;
+    }
+    .info p{
+      color: #6b5c4f;
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    .valores-delivery{
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 30px;
+      max-width: 1100px;
+      margin: 20px auto 60px;
+      padding: 20px 20px 90px 20px;
+    }
+    .valores{
+      background-color: #F5EFE0;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(172, 150, 116, 0.2);
+    }
+    .valores ul{
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    .valores ul:not(:last-child) li{
+      border-bottom: 1px solid #e0d8c0;
+    }
+    .valores li{
+      display: grid;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 40px;
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+    
+    .valores li.cabecalho{
+      background-color: #E8C766;
+      padding: 18px 40px;
+    }
+    .valores li.cabecalho span{
+    font-weight: bolder;
+    color: #3D2B1F;
+    }
+    .valores .valor,  .valores .taxa {
+      color: #966545;
+      font-weight: bold;
+      font-size: 14px;
+    }  
+    .valores-delivery p{
+      color: #6b5c4f;
+      font-size: 13px;
+    }
+     
+    footer{
+      background-color: #0D0D0D;
+      color:#F5EFE0;
+      padding: 50px 60px;
+    }
+    .informações{
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 50px;
+      max-width: 1100px;
+      margin: auto;
+    }
+    .informações h4{
+      color: #E8C766;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 12px;
+      margin-bottom: 15px;
+    }
+
+    .informações .marca h4{
+      color: #E8C766;
+      font-family: Georgia, 'Times New Roman', Times, serif;
+      font-size: 20px;
+      margin-bottom: 15px;
+    }
+
+    .informações p{
+      font-size:13px ;
+      line-height: 1.6;
+      max-width: 280px;
+    }
+    .informações span{
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 13px;
+      color: #E8C766;
+      max-width: 280px;
+    }
+    .informações span p{
+      color: #F5EFE0;
+      font-size: 12px;
+    }
+    .informações span svg{
+      flex-shrink: 0;
+    }
+    
+    .navegação a{
+      display: block;
+      color: #F5EFE0;
+      text-decoration: none;
+      font-size: 13px;
+      margin-bottom: 12px;
+    } 
+    .institucional a{
+      display: block;
+      color: #F5EFE0;
+      text-decoration: none;
+      font-size: 13px;
+      margin-bottom: 12px;
+    }
