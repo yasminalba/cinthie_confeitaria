@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Contato - Cinthiê Confeitaria</title>
+</head>
+<body>
+
+    <!-- CABEÇALHO -->
+    <p><small><strong>CONTATO</strong></small></p>
+    <h1>Vamos falar sobre o seu pedido</h1>
+    <p>Encomendas de bolo de festa, docinhos e kits corporativos: conte a data, o sabor e a quantidade.</p>
+
+    <hr>
+
+    <!-- FORMULÁRIO DE CONTATO -->
+    <h2>Fale com a gente</h2>
+    
+    <form action="" method="POST">
+        
+        <p>
+            <label for="nome"><strong>Nome</strong></label><br>
+            <input type="text" id="nome" name="nome" placeholder="Seu nome" required>
+        </p>
+
+        <p>
+            <label for="whatsapp"><strong>WhatsApp</strong></label><br>
+            <input type="tel" id="whatsapp" name="whatsapp" placeholder="(11) 90000-0000" pattern="[0-9() -]+" required>
+        </p>
+
+        <p>
+            <label for="email"><strong>E-mail</strong></label><br>
+            <input type="email" id="email" name="email" placeholder="voce@email.com" required>
+        </p>
+
+        <p>
+            <label for="assunto"><strong>Assunto</strong></label><br>
+            <select id="assunto" name="assunto" required>
+                <option value="" disabled selected>Selecione...</option>
+                <option value="encomenda">Encomenda</option>
+                <option value="duvida">Dúvida</option>
+                <option value="outros">Outros</option>
+            </select>
+        </p>
+
+        <p>
+            <label for="mensagem"><strong>Mensagem</strong></label><br>
+            <textarea id="mensagem" name="mensagem" rows="5" cols="40" placeholder="Descreva seu pedido..." required></textarea>
+        </p>
+
+        <p>
+            <button type="submit">Enviar mensagem</button>
+        </p>
+
+        <p>
+            <small>Campos validados pelos recursos nativos do HTML5 (required, pattern, type="email", type="tel"). Este formulário é uma demonstração e ainda não envia e-mails.</small>
+        </p>
+
+    </form>
+
+    <hr>
+
+    <!-- INFORMAÇÕES DE CONTATO DIRETAS -->
+    
+    <p>
+        <small>WHATSAPP E TELEFONE</small><br>
+        <strong>📞 (11) 93935-9449</strong>
+    </p>
+
+    <p>
+        <small>E-MAIL</small><br>
+        <strong>✉️ contato@cinthieconfeitaria.com.br</strong>
+    </p>
+
+    <p>
+        <small>ENDEREÇO</small><br>
+        <strong>📍 R. Cesário Galero, 262 — Tatuapé, São Paulo - SP, 03071-000</strong>
+    </p>
+
+    <p>
+        <small>INSTAGRAM</small><br>
+        <strong>📷 @cinthieconfeitaria</strong>
+    </p>
+
+</body>
+</html>
