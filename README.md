@@ -33,7 +33,7 @@ As informações obtidas durante esse contato ajudaram o grupo a definir quais c
 
 A foto abaixo registra o contato do grupo com a organização durante a visita presencial:
 
-![Registro da visita à Cinthiê Confeitaria](assets/imagens/entrevista.jpg)
+![Registro da visita à Cinthiê Confeitaria](https://github.com/yasminalba/cinthie_confeitaria/raw/main/assets/imagens/entrevista.jpg)
 
 **Forma de contato utilizada:** visita presencial.
 
@@ -70,3 +70,9 @@ Durante o projeto, também foi possível desenvolver melhor nossos conhecimentos
 Apesar dos desafios encontrados durante o desenvolvimento, o projeto contribuiu para o aprendizado do grupo e resultou em uma estrutura de site que representa a Cinthiê Confeitaria e sua proposta.
 
 Essa primeira etapa também servirá como base para a continuação do projeto nas próximas etapas da atividade.
+
+---
+
+## 5. Site hospedado
+
+🔗 [Acessar o site da Cinthiê Confeitaria](https://yasminalba.github.io/cinthie_confeitaria/)
