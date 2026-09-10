@@ -6,6 +6,7 @@
 - **Vinicius Ferreira da Silva** — RA: 47432691
 - **Yasmin America Mollinedo Alba** — RA: 47071303
 - **Nicolas Miguel Tavares** — RA: 47658037
+- **João Paulo de lima Rodrigues** — RA: 47850876
 
 ---
 
