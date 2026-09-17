@@ -2,11 +2,11 @@
 
 ## 1. Nomes dos alunos
 
-- **Ryan Everton Andrade Simões** — RA: 47647663
-- **Vinicius Ferreira da Silva** — RA: 47432691
-- **Yasmin America Mollinedo Alba** — RA: 47071303
-- **Nicolas Miguel Tavares** — RA: 47658037
-- **João Paulo de lima Rodrigues** — RA: 47850876
+- **Ryan Everton Andrade Simões** — RGM: 47647663 - GithHub: 8enn7
+- **Vinicius Ferreira da Silva** — RA: 47432691 - GitHub: viniferreiradevtech
+- **Yasmin America Mollinedo Alba** — RA: 47071303 - GitHub: yasminalba
+- **Nicolas Miguel Tavares** — RA: 47658037 - GitHub: nicolasmigueltavares2007-maker
+- **João Paulo de lima Rodrigues** — RA: 47850876 - GitHub: jotinzl
 
 ---
 
@@ -77,3 +77,7 @@ Essa primeira etapa também servirá como base para a continuação do projeto n
 ## 5. Site hospedado
 
 🔗 [Acessar o site da Cinthiê Confeitaria](https://yasminalba.github.io/cinthie_confeitaria/)
+
+## 6. W3 Validator
+
+ ✅ Todas as páginas validadas no W3C Validator, sem erros ou avisos.
