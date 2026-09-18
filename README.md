@@ -79,3 +79,5 @@ Essa primeira etapa também vai servir de base para a continuação do projeto n
 ## 6. Validador W3C
 
 ✅ Todas as páginas foram validadas no Validador W3C, sem erros ou avisos.
+
+![Validação W3C](assets/imagens/validador.png)
