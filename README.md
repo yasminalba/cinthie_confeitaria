@@ -34,6 +34,12 @@ A foto abaixo registra o contato do grupo com a organização durante a visita p
 
 Forma de contato utilizada: visita presencial.
 
+### Formas de contato da Confeitaria
+
+Whathsapp: (11) 93935-9449.
+
+Instagram: confeitaria_cinthie.
+
 ### Desenvolvimento do site
 
 Depois da visita, o grupo organizou as informações levantadas e definiu a estrutura do site.
