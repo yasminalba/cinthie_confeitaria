@@ -1,0 +1,1257 @@
+/* =========================
+   CONFIGURAÇÕES GERAIS
+========================= */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #ebe6c0;
+    margin: 0;
+    text-align: justify;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+header {
+    background-color: #000000;
+    padding: 30px 0;
+    margin: 0;
+    color: #E8C766;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-bottom: 10px;
+}
+
+.logo img {
+    max-width: 120px;
+    display: block;
+}
+
+.menu {
+    display: flex;
+    gap: 25px;
+}
+
+.menu a {
+    color: #F5EFE0;
+    text-decoration: none;
+    font-size: 13px;
+}
+
+.menu a:hover {
+    color: #C9A227;
+}
+
+.menu .inicio,
+.menu .quem-somos {
+    color: #C9A227;
+}
+
+.menu a.ativo {
+    color: #C9A227;
+}
+
+.botao-whatsapp {
+    display: inline-block;
+    background-color: #C9A227;
+    color: #000000;
+    padding: 10px 18px;
+    text-decoration: none;
+    font-size: 12px;
+    border-radius: 8px;
+    width: 100px;
+    text-align: center;
+}
+
+.linha-divisoria {
+    border-bottom: 1px solid rgba(232, 199, 102, 0.3);
+    width: 100%;
+}
+
+/* =========================
+   BANNER PRINCIPAL
+========================= */
+
+.banner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 100px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 60px 0;
+}
+
+/* Apenas o banner do Cardápio */
+
+.banner:has(> .texto) {
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 0;
+}
+
+.banner:has(> .texto) .texto {
+    width: 100%;
+}
+
+.banner:has(> .texto) .botoes-home {
+    margin-top: 5px;
+}
+
+.coluna-texto {
+    max-width: none;
+    width: 100%;
+    padding: 20px 0;
+}
+
+.texto .localizacao,
+.texto .informacao {
+    color: #C9A227;
+    font-size: 14px;
+    margin-bottom: 15px;
+}
+
+/* TÍTULOS E TEXTOS DOS BANNERS */
+
+.texto h1 {
+    color: #F5EFE0;
+    font-family: Georgia, "Times New Roman", Times, serif;
+    font-size: 42px;
+    font-weight: lighter;
+    max-width: none;
+    margin: 0 0 10px;
+    line-height: 1.2;
+    text-align: left;
+    white-space: nowrap;
+}
+
+.texto h1 br {
+    display: block;
+}
+
+.texto h1 + p {
+    color: #F5EFE0;
+    font-size: 17px;
+    line-height: 1.5;
+    margin: 0;
+    text-align: left;
+    white-space: nowrap;
+}
+
+.avaliacao {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #F5EFE0;
+    margin-bottom: 20px;
+}
+
+.estrela {
+    color: #C9A227;
+}
+
+/* =========================
+   BOTÕES DO INÍCIO
+========================= */
+
+.botoes-home {
+    display: flex;
+    gap: 10px;
+    margin-top: 5px;
+}
+
+.botao-principal {
+    display: inline-block;
+    background-color: #C9A227;
+    color: #0D0D0D;
+    padding: 12px 20px;
+    text-decoration: none;
+    font-size: 13px;
+    border-radius: 8px;
+}
+
+.botao-segundario {
+    display: inline-block;
+    border: 1px solid #C9A227;
+    color: #E8C766;
+    padding: 12px 20px;
+    text-decoration: none;
+    font-size: 13px;
+    border-radius: 8px;
+}
+
+.info-loja {
+    display: flex;
+    gap: 25px;
+    font-size: 14px;
+    color: #E8C766;
+    margin-top: 20px;
+}
+
+.info-loja span {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.coluna-imagem {
+    position: relative;
+    max-width: 500px;
+}
+
+.coluna-imagem img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 16px;
+    display: block;
+}
+
+.citacao {
+    position: absolute;
+    bottom: -20px;
+    left: 20px;
+    background: #F5EFE0;
+    padding: 10px 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    max-width: 280px;
+    font-style: italic;
+    color: #3D2B1F;
+}
+
+.citacao span {
+    display: block;
+    margin-top: 8px;
+    font-style: normal;
+    font-size: 12px;
+    color: #3D2B1F;
+    opacity: 0.7;
+}
+
+/* =========================
+   CARDÁPIO / CATEGORIAS
+========================= */
+
+.cardapio {
+    background-color: #ebe6c0;
+    color: #000000;
+    padding: 80px 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.cardapio .subtitulo {
+    color: #3D2B1F;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+}
+
+.cardapio .titulo {
+    color: #241b15;
+    font-family: Georgia, "Times New Roman", Times, serif;
+    font-size: 32px;
+    font-weight: normal;
+    margin-bottom: 40px;
+}
+
+.grade {
+    display: flex;
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.categorias {
+    background-color: #F5EFE0;
+    border-radius: 12px;
+    padding: 25px;
+    flex: 1;
+    text-align: left;
+    box-shadow: 0 4px 12px rgb(172, 150, 116);
+}
+
+.categorias .icone {
+    color: #3D2B1F;
+    display: block;
+    width: 28px;
+    height: 28px;
+    margin-bottom: 15px;
+}
+
+.categorias h3 {
+    color: #3D2B1F;
+    font-family: Georgia, "Times New Roman", Times, serif;
+    font-size: 17px;
+    font-weight: normal;
+    margin-bottom: 8px;
+}
+
+.categorias p {
+    color: #6b5c4f;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+/* =========================
+   CARDÁPIO - PÁGINA
+========================= */
+
+.cardapio-tabela {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    max-width: 1100px;
+    margin: 60px auto;
+    padding: 20px 20px 150px;
+}
+
+.cardapio-tabela h2 {
+    grid-column: 1 / -1;
+    color: #3D2B1F;
+    font-family: Georgia, "Times New Roman", Times, serif;
+    font-size: 30px;
+    margin: 0 0 10px;
+}
+
+.card {
+    background-color: #F5EFE0;
+    border-radius: 20px;
+    padding: 35px 40px;
+    box-shadow: 0 4px 12px rgba(172, 150, 116, 0.2);
+}
+
+.card h3 {
+    font-family: Georgia, "Times New Roman", Times, serif;
+    color: #3D2B1F;
+    font-size: 22px;
+    font-weight: bold;
+    margin: 0 0 25px;
+}
+
+.card ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.card li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    padding: 14px 0;
+    border-bottom: 1px solid #e0d8c0;
+    text-align: left;
+}
+
+.card li:last-child {
+    border-bottom: none;
+}
+
+.card li span:first-child {
+    color: #3D2B1F;
+    font-size: 14px;
+}
+
+.card .preco {
+    color: #966545;
+    font-weight: bold;
+    font-size: 14px;
+    margin-left: 20px;
+    white-space: nowrap;
+}
+
+/* =========================
+   SOBRE / QUEM SOMOS
+========================= */
+
+.sobre {
+    display: flex;
+    align-items: flex-start;
+    gap: 60px;
+    max-width: 1200px;
+    margin: 80px auto;
+    padding: 0 40px;
+}
+
+.texto-sobre {
+    flex: 1;
+    padding-top: 10px;
+}
+
+.texto-sobre p {
+    color: #3D2B1F;
+    font-size: 15px;
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+
+.foto {
+    flex: 1;
+}
+
+.foto img {
+    width: 100%;
+    border-radius: 25px;
+    display: block;
+    box-shadow: 0 4px 12px rgb(172, 150, 116);
+}
+
+/* =========================
+   CARDS DE AVALIAÇÃO
+========================= */
+
+.sobre .grade {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.cards {
+    background-color: #F5EFE0;
+    border-radius: 12px;
+    flex: 1;
+    padding: 10px;
+    text-align: center;
+    box-shadow: 0 4px 12px rgb(172, 150, 116);
+}
+
+.cards h2 {
+    font-family: Georgia, "Times New Roman", Times, serif;
+    color: #3D2B1F;
+    font-size: 26px;
+    margin: 0;
+    font-weight: normal;
+}
+
+.cards p {
+    color: #000000;
+    font-size: 12px;
+    margin: 5px 0 0;
+}
+
+/* =========================
+   ÁUDIO
+========================= */
+
+.entrevista-audio {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 60px 40px;
+    text-align: center;
+}
+
+.entrevista-audio .informacao {
+    color: #C9A227;
+    font-size: 14px;
+    margin-bottom: 15px;
+}
+
+.entrevista-audio h2 {
+    color: #3D2B1F;
+    font-family: Georgia, "Times New Roman", Times, serif;
+    font-size: 30px;
+    font-weight: normal;
+}
+
+.entrevista-audio > p:not(.informacao) {
+    color: #3D2B1F;
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+.entrevista-audio audio {
+    margin-top: 20px;
+    width: 100%;
+    max-width: 500px;
+}
+
+/* =========================
+   CARDS DE INFORMAÇÃO
+========================= */
+
+.grade-info {
+    display: flex;
+    gap: 50px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 60px 20px 150px;
+}
+
+.card-info {
+    background-color: #F5EFE0;
+    border-radius: 25px;
+    flex: 1;
+    padding: 30px 35px;
+    text-align: left;
+    box-shadow: 0 4px 12px rgb(172, 150, 116);
+}
+
+.card-info h3 {
+    font-family: Georgia, "Times New Roman", Times, serif;
+    color: #3D2B1F;
+    font-size: 20px;
+    margin-top: 0;
+    margin-bottom: 12px;
+    text-align: left;
+}
+
+.card-info p {
+    color: #000000;
+    font-size: 14px;
+    line-height: 1.6;
+    text-align: left;
+}
+
+/* =========================
+   GALERIA
+========================= */
+
+.imagens {
+    margin: 0 auto;
+    max-width: 1200px;
+}
+
+.imagens h2 {
+    color: #241b15;
+    font-family: Georgia, "Times New Roman", Times, serif;
+    font-size: 32px;
+    font-weight: normal;
+    margin-bottom: 40px;
+}
+
+.galeria {
+    display: flex;
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.item-galeria {
+    flex: 1;
+    background-color: #ffffff;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgb(172, 150, 116);
+}
+
+.item-galeria img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+}
+
+.item-galeria p {
+    padding: 5px 20px 20px;
+    color: #6b5c4f;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+/* =========================
+   NOVIDADES
+========================= */
+
+.novidade {
+    background-color: #ebe6c0;
+    padding: 80px 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.novidade > p {
+    color: #3D2B1F;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+}
+
+.novidade h2 {
+    color: #241b15;
+    font-family: Georgia, "Times New Roman", Times, serif;
+    font-size: 32px;
+    font-weight: normal;
+    margin-bottom: 40px;
+}
+
+.novidade-conteudo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+}
+
+.novidade-conteudo video {
+    width: 400px;
+    height: 500px;
+    object-fit: cover;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgb(172, 150, 116);
+}
+
+.novidade-texto {
+    max-width: 350px;
+    background-color: #F5EFE0;
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgb(172, 150, 116);
+}
+
+.novidade-texto p {
+    color: #6b5c4f;
+    font-size: 14px;
+    line-height: 1.6;
+    text-align: left;
+    margin: 0 0 15px;
+}
+
+.novidade-imagem {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 50px;
+}
+
+.card-imagem {
+    width: 400px;
+    height: 400px;
+    padding: 15px;
+    border-radius: 16px;
+}
+
+.card-imagem img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+    display: block;
+    box-shadow: 0 4px 12px rgb(172, 150, 116);
+}
+
+/* =========================
+   AVALIAÇÕES - HOME
+========================= */
+
+.comentarios-google {
+    background-color: #ebe6c0;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.comentarios-google .subtitulo {
+    color: #3D2B1F;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+}
+
+.comentarios-google .titulo {
+    color: #241b15;
+    font-family: Georgia, "Times New Roman", Times, serif;
+    font-size: 32px;
+    font-weight: normal;
+    margin-bottom: 40px;
+}
+
+/* ALTERADO SOMENTE PARA OS CARDS DA HOME */
+
+.grade-google {
+    display: flex;
+    gap: 20px;
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.comentarios {
+    background-color: #F5EFE0;
+    border-radius: 12px;
+    padding: 30px;
+    min-height: 300px;
+    flex: 1;
+    width: 100%;
+    text-align: left;
+    box-shadow: 0 4px 12px rgb(172, 150, 116);
+}
+
+.comentarios h3 {
+    font-size: 15px;
+    color: #3D2B1F;
+    line-height: 1.5;
+}
+
+/* =========================
+   ENCOMENDA
+========================= */
+
+.encomenda {
+    background-color: #E8C766;
+    color: #0D0D0D;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1200px;
+    font-weight: bold;
+    border-radius: 15px;
+    margin: 50px auto 100px;
+}
+
+.encomenda-texto {
+    position: relative;
+    margin: 20px 60px 10px;
+    padding: 20px 0;
+}
+
+.encomenda-texto p {
+    font-family: Georgia, "Times New Roman", Times, serif;
+    font-weight: lighter;
+    font-size: 25px;
+    margin: 0;
+}
+
+.encomenda-texto h4 {
+    font-size: 12px;
+    font-weight: normal;
+    margin: 5px 0 0;
+}
+
+.botaoWhatsapp {
+    color: #C9A227;
+    background-color: #000000;
+    padding: 12px 20px;
+    text-decoration: none;
+    font-weight: normal;
+    margin: 20px 50px 10px;
+    border-radius: 15px;
+}
+
+/* =========================
+   DELIVERY
+========================= */
+
+.delivery {
+    padding-top: 70px;
+}
+
+.delivery h2 {
+    max-width: 1200px;
+    margin: 0 auto 5px;
+    padding: 0 20px;
+    color: #3D2B1F;
+    font-family: Georgia, "Times New Roman", Times, serif;
+    font-size: 28px;
+    font-weight: normal;
+    text-align: left;
+}
+
+.delivery .grade {
+    max-width: 1200px;
+    margin: 20px auto 60px;
+    padding: 20px 20px 40px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+}
+
+.delivery .info {
+    background-color: #F5EFE0;
+    border-radius: 20px;
+    padding: 35px 40px;
+    box-shadow: 0 4px 12px rgba(61, 43, 31, 0.08);
+}
+
+.delivery .info .icone {
+    width: 28px;
+    height: 28px;
+    display: block;
+    margin-bottom: 15px;
+    color: #3D2B1F;
+}
+
+.delivery .info h3 {
+    color: #3D2B1F;
+    font-family: Georgia, "Times New Roman", Times, serif;
+    font-size: 17px;
+    font-weight: normal;
+    margin: 0 0 10px;
+}
+
+.delivery .info p {
+    color: #6b5c4f;
+    font-size: 13px;
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* =========================
+   TAXAS E PRAZOS - DELIVERY
+========================= */
+
+.valores-delivery {
+    max-width: 1100px;
+    margin: 20px auto 60px;
+    padding: 20px 20px 90px;
+}
+
+.valores-delivery h2 {
+    max-width: 1200px;
+    margin: 0 0 30px;
+    padding: 0;
+    color: #3D2B1F;
+    font-family: Georgia, "Times New Roman", Times, serif;
+    font-size: 28px;
+    font-weight: normal;
+    text-align: left;
+}
+
+.valores {
+    background-color: #F5EFE0;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(61, 43, 31, 0.08);
+}
+
+.valores ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.valores li {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    align-items: center;
+    padding: 14px 40px;
+    color: #3D2B1F;
+    font-size: 13px;
+}
+
+.valores li:not(.cabecalho) {
+    border-bottom: 1px solid rgba(61, 43, 31, 0.12);
+}
+
+.valores li:last-child {
+    border-bottom: none;
+}
+
+.valores li.cabecalho {
+    background-color: #C9A227;
+    padding: 18px 40px;
+}
+
+.valores li.cabecalho span {
+    color: #3D2B1F;
+    font-weight: bold;
+}
+
+.valores .valor {
+    color: #966545;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.valores .tempo {
+    color: #6b5c4f;
+}
+
+.valores-delivery > p {
+    color: #6b5c4f;
+    font-size: 13px;
+    line-height: 1.5;
+    margin-top: 15px;
+}
+
+/* =========================
+   FEEDBACKS
+========================= */
+
+.comentarios-google {
+    background-color: #ebe6c0;
+    padding: 80px 40px 120px;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.comentarios-google h2 {
+    grid-column: 1 / -1;
+    color: #3D2B1F;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 28px;
+    font-weight: normal;
+    text-align: left;
+    margin: 0 0 5px;
+}
+
+.comentarios .descricao {
+    color: #6b5c4f;
+    font-size: 12px;
+    margin: 0 0 5px;
+}
+
+.comentarios .estrela {
+    display: block;
+    color: #C9A227;
+    margin-bottom: 12px;
+}
+
+.comentarios p {
+    color: #3D2B1F;
+    font-size: 13px;
+    margin: 0;
+    line-height: 1.5;
+}
+
+.site-comentarios {
+    grid-column: 1 / -1;
+    text-align: left;
+    margin-top: 10px;
+}
+
+.avaliar {
+    display: inline-block;
+    background-color: #C9A227;
+    color: #0D0D0D;
+    padding: 12px 24px;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 8px;
+}
+
+.avaliar:hover {
+    background-color: #E8C766;
+}
+
+/* =========================
+   SELO DE FIDELIDADE
+========================= */
+
+.fidelidade {
+    padding: 80px 40px 120px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.fidelidade h2 {
+    color: #3D2B1F;
+    font-family: Georgia, "Times New Roman", Times, serif;
+    font-size: 28px;
+    font-weight: normal;
+    margin: 0 0 30px;
+    text-align: left;
+}
+
+.cartao-fidelidade {
+    background-color: #F5EFE0;
+    border-radius: 20px;
+    padding: 20px 20px 10px;
+    box-shadow: 0 4px 12px rgba(172, 150, 116, 0.2);
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.cartao-fidelidade .topo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 35px;
+}
+
+.cartao-fidelidade .topo h3 {
+    font-family: Georgia, "Times New Roman", Times, serif;
+    font-size: 22px;
+    color: #3D2B1F;
+    font-weight: normal;
+    margin: 0;
+}
+
+.contagem {
+    color: #E8C766;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.fidelidade .grade {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 25px;
+    margin-bottom: 35px;
+    max-width: 800px;
+}
+
+.selo,
+.selo-ok {
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+}
+
+.selo {
+    border: 2px dashed #6b5c4f;
+    color: #C9A227;
+}
+
+.selo-ok {
+    border: 2px dashed #C9A227;
+    background-color: #f0e0b8;
+    color: #C9A227;
+}
+
+.legenda {
+    color: #6b5c4f;
+    font-size: 12px;
+    margin: 0;
+}
+
+.banner:has(.informacao) .botoes-home {
+    margin-top: 20px;
+}
+
+/* =========================
+   GALERIA - PÁGINA
+========================= */
+
+.galeria-pagina {
+    background-color: #ebe6c0;
+    padding: 80px 40px 120px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.galeria-pagina h2 {
+    color: #3D2B1F;
+    font-family: Georgia, "Times New Roman", Times, serif;
+    font-size: 32px;
+    font-weight: normal;
+    margin: 0 0 10px;
+    text-align: left;
+}
+
+.grade-galeria {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.grade-galeria h3 {
+    grid-column: 1 / -1;
+    color: #3D2B1F;
+    font-family: Georgia, "Times New Roman", Times, serif;
+    font-size: 18px;
+    font-weight: normal;
+    margin: 0 0 5px;
+}
+
+.foto-galeria {
+    background-color: #F5EFE0;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgb(172, 150, 116);
+}
+
+.foto-galeria img {
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+}
+
+/* =========================
+   TERMOS E CONDIÇÕES
+========================= */
+
+.termo {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 70px 40px 120px;
+}
+
+.termo .texto {
+    width: 100%;
+}
+
+.termo ol {
+    margin: 0;
+    padding-left: 30px;
+}
+
+.termo li {
+    color: #3D2B1F;
+    padding-left: 5px;
+    margin-bottom: 35px;
+}
+
+.termo article {
+    background: none;
+    padding: 0;
+    box-shadow: none;
+}
+
+.termo h2 {
+    color: #3D2B1F;
+    font-family: Georgia, "Times New Roman", Times, serif;
+    font-size: 24px;
+    font-weight: bold;
+    margin: 0 0 12px;
+    text-align: left;
+}
+
+.termo .texto-termo {
+    color: #6b5c4f;
+    font-size: 15px;
+    line-height: 1.7;
+    margin: 0;
+    text-align: left;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+    background-color: #0D0D0D;
+    color: #F5EFE0;
+    padding: 50px 60px;
+}
+
+.informações {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 50px;
+    max-width: 1100px;
+    margin: auto;
+}
+
+.informações h3 {
+    color: #E8C766;
+    font-size: 12px;
+    margin-bottom: 15px;
+}
+
+.marca h3 {
+    color: #E8C766;
+    font-family: Georgia, "Times New Roman", Times, serif;
+    font-size: 20px;
+    margin-bottom: 15px;
+}
+
+.marca > p {
+    font-size: 13px;
+    line-height: 1.6;
+    max-width: 280px;
+    margin-bottom: 20px;
+}
+
+.marca .informacao {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.marca .informacao svg {
+    flex-shrink: 0;
+    color: #E8C766;
+    width: 18px;
+    height: 18px;
+}
+
+.marca .informacao p {
+    margin: 0;
+    color: #F5EFE0;
+    font-size: 12px;
+    line-height: 1.5;
+    max-width: none;
+}
+
+.navegação a,
+.institucional a {
+    display: block;
+    color: #F5EFE0;
+    text-decoration: none;
+    font-size: 13px;
+    margin-bottom: 12px;
+}
+
+.navegação a:hover,
+.institucional a:hover {
+    color: #E8C766;
+}
+
+/* =========================
+   AJUSTE DOS CARDS DA HOME
+   NÃO ALTERA A FEEDBACKS
+========================= */
+
+.comentarios-google:has(.grade-google) {
+    background-color: #ebe6c0;
+    padding: 80px 40px 120px;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: block;
+}
+
+.comentarios-google:has(.grade-google) .grade-google {
+    display: flex;
+    gap: 20px;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.comentarios-google:has(.grade-google) .comentarios {
+    flex: 1;
+    width: 100%;
+    min-height: 300px;
+    padding: 30px;
+    background-color: #F5EFE0;
+    border-radius: 12px;
+    text-align: left;
+    box-shadow: 0 4px 12px rgb(172, 150, 116);
+}
+
+.comentarios-google:has(.grade-google) .comentarios h3 {
+    font-size: 15px;
+    color: #3D2B1F;
+    line-height: 1.5;
+}
+
+.comentarios-google:has(.grade-google) .comentarios .estrela {
+    display: block;
+    color: #C9A227;
+    margin-bottom: 12px;
+}
+
+.comentarios-google:has(.grade-google) .comentarios p {
+    color: #3D2B1F;
+    font-size: 13px;
+    margin: 0;
+    line-height: 1.5;
+}
