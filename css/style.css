@@ -1084,6 +1084,130 @@ nav {
 }
 
 /* =========================
+   CONTATO
+========================= */
+
+main:has(.formulario-contato) {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 30px;
+    align-items: start;
+    padding: 80px 40px 120px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.formulario-contato h2,
+.informacoes-contato h2 {
+    color: #3D2B1F;
+    font-family: Georgia, "Times New Roman", Times, serif;
+    font-size: 28px;
+    font-weight: normal;
+    margin: 0 0 30px;
+    text-align: left;
+}
+
+.formulario-contato,
+.informacoes-contato {
+    background-color: #F5EFE0;
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 4px 12px rgba(172, 150, 116, 0.2);
+}
+
+/* ---------- Formulário ---------- */
+
+.formulario-contato .campo {
+    margin-bottom: 20px;
+}
+
+.formulario-contato label {
+    color: #3D2B1F;
+    font-size: 14px;
+}
+
+.formulario-contato input,
+.formulario-contato select,
+.formulario-contato textarea {
+    width: 100%;
+    box-sizing: border-box;
+    margin-top: 8px;
+    padding: 12px 14px;
+    background-color: #fffaf0;
+    border: 1px solid #d8c9a8;
+    border-radius: 12px;
+    color: #3D2B1F;
+    font-family: inherit;
+    font-size: 14px;
+}
+
+.formulario-contato textarea {
+    resize: vertical;
+}
+
+.formulario-contato input::placeholder,
+.formulario-contato textarea::placeholder {
+    color: #6b5c4f;
+    opacity: 0.7;
+}
+
+.formulario-contato input:focus,
+.formulario-contato select:focus,
+.formulario-contato textarea:focus {
+    outline: none;
+    border-color: #C9A227;
+    box-shadow: 0 0 0 3px rgba(201, 162, 39, 0.2);
+}
+
+.formulario-contato button {
+    background-color: #C9A227;
+    color: #fff;
+    border: none;
+    border-radius: 30px;
+    padding: 12px 28px;
+    font-size: 14px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.formulario-contato button:hover {
+    background-color: #b08e1f;
+}
+
+/* ---------- Informações de contato ---------- */
+
+.informacoes-contato p {
+    margin: 0 0 25px;
+}
+
+.informacoes-contato small {
+    color: #E8C766;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.informacoes-contato strong {
+    display: inline-block;
+    margin-top: 6px;
+    color: #3D2B1F;
+    font-size: 15px;
+    font-weight: normal;
+    line-height: 1.5;
+}
+
+/* ---------- Responsivo ---------- */
+
+@media (max-width: 800px) {
+    main:has(.formulario-contato) {
+        grid-template-columns: 1fr;
+        padding: 40px 20px 80px;
+    }
+}
+
+/* =========================
    TERMOS E CONDIÇÕES
 ========================= */
 
