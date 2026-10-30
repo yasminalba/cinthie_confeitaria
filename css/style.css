@@ -1613,3 +1613,388 @@ body:has(.endereco-grade) .texto h1 + p {
         grid-template-columns: 1fr;
     }
 }
+
+/* ---------- Status da loja ---------- */
+
+.info-loja .status-aberto {
+    color: #7fd18b;
+}
+
+.info-loja .status-fechado {
+    color: #e08a7a;
+}
+
+/* ---------- Menu responsivo ---------- */
+
+.menu-toggle {
+    display: none;
+    background: none;
+    border: 1px solid #C9A227;
+    border-radius: 8px;
+    color: #E8C766;
+    font-size: 20px;
+    line-height: 1;
+    padding: 8px 12px;
+    cursor: pointer;
+}
+
+@media (max-width: 900px) {
+    nav {
+        flex-wrap: wrap;
+        gap: 15px;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .logo {
+        order: 1;
+        margin-right: auto;
+    }
+
+    .botao-whatsapp {
+        order: 2;
+    }
+
+    .menu-toggle {
+        display: block;
+        order: 3;
+    }
+
+    .menu {
+        display: none;
+        order: 4;
+        width: 100%;
+        flex-direction: column;
+        gap: 14px;
+        padding-top: 10px;
+    }
+
+    .menu.aberto {
+        display: flex;
+    }
+
+    .menu a {
+        font-size: 15px;
+    }
+}
+
+/* ---------- Busca no cardápio ---------- */
+
+.busca-cardapio {
+    grid-column: 1 / -1;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.busca-cardapio label {
+    color: #3D2B1F;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.busca-cardapio input {
+    width: 100%;
+    padding: 12px 14px;
+    background-color: #FFFAF0;
+    border: 1px solid #D8C9A8;
+    border-radius: 12px;
+    color: #3D2B1F;
+    font-family: inherit;
+    font-size: 14px;
+}
+
+.busca-cardapio input:focus {
+    outline: none;
+    border-color: #C9A227;
+    box-shadow: 0 0 0 3px rgba(201, 162, 39, 0.2);
+}
+
+.busca-vazia {
+    grid-column: 1 / -1;
+    color: #6b5c4f;
+    font-size: 14px;
+    margin: 0;
+}
+
+.card[hidden],
+.card li[hidden],
+.busca-vazia[hidden] {
+    display: none;
+}
+
+/* ---------- Cartão de fidelidade ---------- */
+
+.selo,
+.selo-ok {
+    cursor: pointer;
+    transition: transform 0.15s ease;
+}
+
+.selo:hover,
+.selo-ok:hover {
+    transform: scale(1.05);
+}
+
+.selo:focus-visible,
+.selo-ok:focus-visible {
+    outline: 3px solid #3D2B1F;
+    outline-offset: 3px;
+}
+
+.mensagem-fidelidade {
+    color: #3D2B1F;
+    font-size: 14px;
+    font-weight: bold;
+    margin: 0 0 10px;
+}
+
+.mensagem-fidelidade:empty {
+    display: none;
+}
+
+/* ---------- Galeria com ampliação ---------- */
+
+.foto-galeria img {
+    cursor: zoom-in;
+}
+
+.lightbox {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.88);
+}
+
+.lightbox[hidden] {
+    display: none;
+}
+
+.lightbox img {
+    max-width: 100%;
+    max-height: 80vh;
+    border-radius: 12px;
+}
+
+.lightbox p {
+    color: #F5EFE0;
+    font-size: 14px;
+    margin: 0;
+    text-align: center;
+}
+
+.lightbox-fechar {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 44px;
+    height: 44px;
+    background-color: #C9A227;
+    border: none;
+    border-radius: 50%;
+    color: #0D0D0D;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+body.lightbox-aberto {
+    overflow: hidden;
+}
+
+/* =========================
+   EFEITOS DE NAVEGAÇÃO
+   (colar no final do style.css)
+========================= */
+
+/* ---------- Sublinhado animado no menu ---------- */
+
+.menu a {
+    padding-bottom: 4px;
+    background-image: linear-gradient(#C9A227, #C9A227);
+    background-repeat: no-repeat;
+    background-position: 0 100%;
+    background-size: 0 2px;
+    transition: background-size 0.3s ease, color 0.2s ease;
+}
+
+.menu a:hover,
+.menu a.ativo {
+    background-size: 100% 2px;
+}
+
+/* ---------- Barra de progresso de leitura ---------- */
+
+.barra-progresso {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 4px;
+    z-index: 1100;
+    background-color: #C9A227;
+}
+
+/* ---------- Barra de navegação flutuante ---------- */
+
+.barra-flutuante {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 900;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 10px 40px;
+    background-color: #0D0D0D;
+    border-bottom: 1px solid rgba(232, 199, 102, 0.3);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
+    transform: translateY(-100%);
+    visibility: hidden;
+    transition: transform 0.3s ease, visibility 0.3s ease;
+}
+
+.barra-flutuante.visivel {
+    transform: translateY(0);
+    visibility: visible;
+}
+
+.flutuante-logo img {
+    display: block;
+    max-width: 60px;
+    height: auto;
+}
+
+.flutuante-links {
+    display: flex;
+    gap: 22px;
+}
+
+.flutuante-links a {
+    color: #F5EFE0;
+    text-decoration: none;
+    font-size: 13px;
+}
+
+.flutuante-links a:hover,
+.flutuante-links a.ativo {
+    color: #C9A227;
+}
+
+.barra-flutuante .botao-whatsapp {
+    padding: 8px 14px;
+}
+
+@media (max-width: 900px) {
+    .barra-flutuante {
+        padding: 10px 20px;
+    }
+
+    .flutuante-links {
+        display: none;
+    }
+}
+
+/* ---------- Botão voltar ao topo ---------- */
+
+.voltar-topo {
+    position: fixed;
+    right: 24px;
+    bottom: 24px;
+    z-index: 800;
+    width: 46px;
+    height: 46px;
+    border: none;
+    border-radius: 50%;
+    background-color: #C9A227;
+    color: #0D0D0D;
+    font-size: 22px;
+    line-height: 1;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease, background-color 0.2s ease;
+}
+
+.voltar-topo.visivel {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.voltar-topo:hover {
+    background-color: #E8C766;
+}
+
+.voltar-topo:focus-visible {
+    outline: 3px solid #3D2B1F;
+    outline-offset: 3px;
+}
+
+/* ---------- Transição entre páginas ---------- */
+
+@keyframes pagina-entrar {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+body.pagina-entrando {
+    animation: pagina-entrar 0.45s ease;
+}
+
+body.saindo {
+    opacity: 0;
+    transition: opacity 0.25s ease;
+}
+
+/* ---------- Cards sobem levemente ao passar o mouse ---------- */
+
+.card,
+.categorias,
+.info,
+.card-info,
+.comentarios,
+.item-galeria,
+.foto-galeria {
+    transition: transform 0.2s ease;
+}
+
+.card:hover,
+.categorias:hover,
+.info:hover,
+.card-info:hover,
+.comentarios:hover,
+.item-galeria:hover,
+.foto-galeria:hover {
+    transform: translateY(-4px);
+}
+
+/* ---------- Aparecer ao rolar (precisa ficar depois dos cards) ---------- */
+
+.reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.reveal.visivel {
+    opacity: 1;
+    transform: translateY(0);
+}
