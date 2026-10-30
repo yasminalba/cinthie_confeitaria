@@ -97,41 +97,94 @@
           <h2>Formulário de orçamento</h2>
           <article class="cartao-fidelidade">
             <div class="topo">
-                <h2>Solicitar orçamento</h2>
+                <h3>Solicitar orçamento</h3>
+                <span class="obrigatorio-legenda"><span aria-hidden="true">*</span> campos obrigatórios</span>
             </div>
- 
-            <form class="formulario-orcamento" action="mailto:contato@cinthieconfeitaria.com.br" method="post" enctype="text/plain">
- 
-                <label for="nome">Nome completo</label>
-                <input type="text" id="nome" name="Nome" placeholder="Seu nome" required>
- 
-                <label for="whatsapp">Whatsapp</label>
-                <input type="tel" id="whatsapp" name="Whatsapp" placeholder="(11) 93935-9449" required>
- 
-                <label for="produto">Tipo de produto</label>
-                <select id="produto" name="Produto" required>
-                    <option value="">Selecione uma opção</option>
-                    <option value="Bolo caseiro">Bolo caseiro</option>
-                    <option value="Bolo confeitado / festa">Bolo confeitado / festa</option>
-                    <option value="Doces finos / brigadeiros">Doces finos / brigadeiros</option>
-                    <option value="Bolo de pote">Bolo de pote</option>
-                    <option value="Mesa de doces">Mesa de doces</option>
-                    <option value="Outro">Outro</option>
-                </select>
- 
-                <label for="tamanho">Tamanho / quantidade</label>
-                <input type="text" id="tamanho" name="Tamanho" placeholder="Ex.: 20 fatias, 50 unidades">
- 
-                <label for="data">Data desejada</label>
-                <input type="date" id="data" name="Data" required>
- 
-                <label for="mensagem">Observações</label>
-                <textarea id="mensagem" name="Observacoes" rows="5" placeholder="Sabor, tema, alergias ou outros detalhes"></textarea>
- 
-                <button type="submit" class="botao-principal">Enviar orçamento</button>
- 
+
+            <form class="formulario-orcamento" id="form-orcamento" action="mailto:contato@cinthieconfeitaria.com.br" method="post" enctype="text/plain">
+
+                <fieldset class="grupo">
+                    <legend><span class="numero" aria-hidden="true">1</span> Seus dados</legend>
+
+                    <div class="linha">
+                        <div class="campo">
+                            <label for="nome">Nome completo <span class="obrigatorio" aria-hidden="true">*</span></label>
+                            <input type="text" id="nome" name="Nome" placeholder="Seu nome" autocomplete="name" required>
+                        </div>
+
+                        <div class="campo">
+                            <label for="whatsapp">Whatsapp <span class="obrigatorio" aria-hidden="true">*</span></label>
+                            <input type="tel" id="whatsapp" name="Whatsapp" placeholder="(11) 93935-9449" autocomplete="tel" inputmode="tel" required>
+                            <small class="dica">Retornamos por aqui em até 24h.</small>
+                        </div>
+                    </div>
+                </fieldset>
+
+                <fieldset class="grupo">
+                    <legend><span class="numero" aria-hidden="true">2</span> Seu pedido</legend>
+
+                    <div class="linha">
+                        <div class="campo">
+                            <label for="produto">Tipo de produto <span class="obrigatorio" aria-hidden="true">*</span></label>
+                            <select id="produto" name="Produto" required>
+                                <option value="">Selecione uma opção</option>
+                                <option value="Bolo caseiro">Bolo caseiro</option>
+                                <option value="Bolo confeitado / festa">Bolo confeitado / festa</option>
+                                <option value="Doces finos / brigadeiros">Doces finos / brigadeiros</option>
+                                <option value="Bolo de pote">Bolo de pote</option>
+                                <option value="Mesa de doces">Mesa de doces</option>
+                                <option value="Outro">Outro</option>
+                            </select>
+                        </div>
+
+                        <div class="campo">
+                            <label for="tamanho">Tamanho / quantidade</label>
+                            <input type="text" id="tamanho" name="Tamanho" placeholder="Ex.: 20 fatias, 50 unidades">
+                        </div>
+                    </div>
+
+                    <div class="linha">
+                        <div class="campo">
+                            <label for="data">Data desejada <span class="obrigatorio" aria-hidden="true">*</span></label>
+                            <input type="date" id="data" name="Data" required>
+                            <small class="dica">Quanto antes você pedir, maior a chance de termos a data livre.</small>
+                        </div>
+
+                        <fieldset class="campo opcoes-grupo">
+                            <legend>Como prefere receber?</legend>
+                            <div class="opcoes">
+                                <label class="opcao">
+                                    <input type="radio" name="Recebimento" value="Retirada na loja" checked>
+                                    <span>Retirada na loja</span>
+                                </label>
+                                <label class="opcao">
+                                    <input type="radio" name="Recebimento" value="Delivery">
+                                    <span>Delivery</span>
+                                </label>
+                            </div>
+                        </fieldset>
+                    </div>
+                </fieldset>
+
+                <fieldset class="grupo">
+                    <legend><span class="numero" aria-hidden="true">3</span> Detalhes</legend>
+
+                    <div class="campo">
+                        <label for="mensagem">Observações</label>
+                        <textarea id="mensagem" name="Observacoes" rows="5" maxlength="500" placeholder="Sabor, tema, alergias ou outros detalhes"></textarea>
+                        <small class="contador" id="contador-mensagem" aria-live="polite">0 / 500</small>
+                    </div>
+                </fieldset>
+
+                <div class="acoes-formulario">
+                    <button type="submit" class="botao-principal">Enviar orçamento</button>
+                    <button type="button" class="botao-whatsapp-form" id="enviar-whatsapp">Enviar pelo Whatsapp</button>
+                </div>
+
+                <p class="status-formulario" id="status-orcamento" role="status" aria-live="polite" hidden></p>
+
             </form>
- 
+
             <p class="legenda">Prefere falar direto? Chame no Whatsapp (11) 93935-9449.</p>
           </article>
         </section>

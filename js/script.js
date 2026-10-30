@@ -732,6 +732,78 @@
       data.min = ano + '-' + mes + '-' + dia;
     }
   }
+    /* -----------------------------------------------
+     16. FORMULÁRIO DE ORÇAMENTO (orcamento.html)
+     - Contador de caracteres das observações
+     - Botão "Enviar pelo Whatsapp": monta a mensagem
+       com os dados preenchidos e abre a conversa
+     - Mensagem de confirmação ao enviar por e-mail
+  ----------------------------------------------- */
+
+  var WHATSAPP_LOJA = '5511939359449';
+
+  function formatarDataBR(valor) {
+    var partes = valor.split('-');
+    return partes.length === 3 ? partes[2] + '/' + partes[1] + '/' + partes[0] : valor;
+  }
+
+  function iniciarOrcamento() {
+    var form = document.getElementById('form-orcamento');
+    if (!form) return;
+
+    var status = document.getElementById('status-orcamento');
+    var botaoWhats = document.getElementById('enviar-whatsapp');
+    var mensagem = document.getElementById('mensagem');
+    var contador = document.getElementById('contador-mensagem');
+
+    function mostrarStatus(texto) {
+      if (!status) return;
+      status.textContent = texto;
+      status.hidden = false;
+    }
+
+    // Contador de caracteres
+    if (mensagem && contador) {
+      var limite = mensagem.maxLength > 0 ? mensagem.maxLength : 500;
+
+      var atualizarContador = function () {
+        contador.textContent = mensagem.value.length + ' / ' + limite;
+        contador.classList.toggle('limite', mensagem.value.length >= limite);
+      };
+
+      mensagem.addEventListener('input', atualizarContador);
+      atualizarContador();
+    }
+
+    // Enviar pelo Whatsapp com os dados do formulário
+    if (botaoWhats) {
+      botaoWhats.addEventListener('click', function () {
+        if (!form.reportValidity()) return;
+
+        var dados = new FormData(form);
+        var linhas = [
+          'Olá! Gostaria de solicitar um orçamento.',
+          '',
+          'Nome: ' + dados.get('Nome'),
+          'Produto: ' + dados.get('Produto')
+        ];
+
+        if (dados.get('Tamanho')) linhas.push('Tamanho/quantidade: ' + dados.get('Tamanho'));
+        linhas.push('Data desejada: ' + formatarDataBR(dados.get('Data')));
+        linhas.push('Recebimento: ' + dados.get('Recebimento'));
+        if (dados.get('Observacoes')) linhas.push('Observações: ' + dados.get('Observacoes'));
+
+        var link = 'https://wa.me/' + WHATSAPP_LOJA + '?text=' + encodeURIComponent(linhas.join('\n'));
+        window.open(link, '_blank', 'noopener');
+        mostrarStatus('Abrimos o Whatsapp com o seu pedido. É só tocar em enviar!');
+      });
+    }
+
+    // Aviso ao enviar por e-mail (o envio em si continua igual: mailto)
+    form.addEventListener('submit', function () {
+      mostrarStatus('Se o seu aplicativo de e-mail abriu, é só confirmar o envio. Retornamos pelo Whatsapp em até 24h.');
+    });
+  }
 
   /* -----------------------------------------------
      INICIALIZAÇÃO
@@ -752,6 +824,7 @@
   iniciarFidelidade();
   iniciarLightbox();
   iniciarFormularios();
+  iniciarOrcamento();
 
   // Primeira leitura da posição de rolagem
   processarRolagem();
