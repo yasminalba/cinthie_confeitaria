@@ -1,5 +1,66 @@
+/* =====================================================
+   Cinthiê Confeitaria — style.css
+
+   ÍNDICE
+   1. Variáveis (paleta, tipografia, sombras)
+   2. Base
+   3. Cabeçalho e navegação
+   4. Banner
+   5. Botões
+   6. Componentes compartilhados (cartões, títulos de seção)
+   7. Páginas
+      7.1  Início
+      7.2  Quem somos
+      7.3  Cardápio
+      7.4  Delivery e "Como funciona" (Orçamento)
+      7.5  Fidelidade
+      7.6  Galeria
+      7.7  Feedbacks
+      7.8  Formulários (Contato e Orçamento)
+      7.9  Endereço
+      7.10 Termos e Política
+   8. Rodapé
+   9. Efeitos e elementos criados pelo JavaScript
+   10. Responsivo
+===================================================== */
+
+
 /* =========================
-   CONFIGURAÇÕES GERAIS
+   1. VARIÁVEIS
+========================= */
+
+:root {
+    /* Paleta */
+    --preto: #000000;
+    --preto-suave: #0D0D0D;
+    --dourado: #C9A227;
+    --dourado-claro: #E8C766;
+    --dourado-hover: #B08E1F;
+    --dourado-fundo: #f0e0b8;
+    --creme: #F5EFE0;
+    --fundo: #ebe6c0;
+    --marrom: #3D2B1F;
+    --marrom-escuro: #241b15;
+    --marrom-medio: #6b5c4f;
+    --preco: #966545;
+    --borda: #D8C9A8;
+    --campo: #FFFAF0;
+    --erro: #B3402A;
+
+    /* Tipografia */
+    --fonte-titulo: Georgia, "Times New Roman", Times, serif;
+
+    /* Sombras */
+    --sombra: 0 4px 12px rgb(172, 150, 116);
+    --sombra-suave: 0 4px 12px rgba(172, 150, 116, 0.2);
+
+    /* Layout */
+    --largura: 1200px;
+}
+
+
+/* =========================
+   2. BASE
 ========================= */
 
 * {
@@ -8,34 +69,46 @@
 
 body {
     font-family: Arial, Helvetica, sans-serif;
-    background-color: #ebe6c0;
+    background-color: var(--fundo);
     margin: 0;
-    text-align: justify;
 }
 
+h2 {
+    font-family: var(--fonte-titulo);
+    font-weight: normal;
+    color: var(--marrom);
+}
+
+.card ul,
+.valores ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+
 /* =========================
-   HEADER
+   3. CABEÇALHO E NAVEGAÇÃO
 ========================= */
 
 header {
-    background-color: #000000;
+    background-color: var(--preto);
+    color: var(--dourado-claro);
     padding: 30px 0;
-    margin: 0;
-    color: #E8C766;
 }
 
-nav {
+header nav {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    max-width: 1200px;
+    max-width: var(--largura);
     margin: 0 auto;
     padding-bottom: 10px;
 }
 
 .logo img {
-    max-width: 120px;
     display: block;
+    max-width: 120px;
 }
 
 .menu {
@@ -44,34 +117,34 @@ nav {
 }
 
 .menu a {
-    color: #F5EFE0;
+    color: var(--creme);
     text-decoration: none;
     font-size: 13px;
+    padding-bottom: 4px;
+    background-image: linear-gradient(var(--dourado), var(--dourado));
+    background-repeat: no-repeat;
+    background-position: 0 100%;
+    background-size: 0 2px;
+    transition: background-size 0.3s ease, color 0.2s ease;
 }
 
-.menu a:hover {
-    color: #C9A227;
-}
-
-.menu .inicio,
-.menu .quem-somos {
-    color: #C9A227;
-}
-
+.menu a:hover,
 .menu a.ativo {
-    color: #C9A227;
+    color: var(--dourado);
+    background-size: 100% 2px;
 }
 
-.botao-whatsapp {
-    display: inline-block;
-    background-color: #C9A227;
-    color: #000000;
-    padding: 10px 18px;
-    text-decoration: none;
-    font-size: 12px;
+/* Botão do menu em telas pequenas (criado pelo JS) */
+.menu-toggle {
+    display: none;
+    background: none;
+    border: 1px solid var(--dourado);
     border-radius: 8px;
-    width: 100px;
-    text-align: center;
+    color: var(--dourado-claro);
+    font-size: 20px;
+    line-height: 1;
+    padding: 8px 12px;
+    cursor: pointer;
 }
 
 .linha-divisoria {
@@ -79,8 +152,9 @@ nav {
     width: 100%;
 }
 
+
 /* =========================
-   BANNER PRINCIPAL
+   4. BANNER
 ========================= */
 
 .banner {
@@ -88,65 +162,38 @@ nav {
     align-items: center;
     justify-content: space-between;
     gap: 100px;
-    max-width: 1200px;
+    max-width: var(--largura);
     margin: 0 auto;
     padding: 60px 0;
 }
 
-/* Apenas o banner do Cardápio */
-
-.banner:has(> .texto) {
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-start;
-    gap: 0;
-}
-
-.banner:has(> .texto) .texto {
-    width: 100%;
-}
-
-.banner:has(> .texto) .botoes-home {
-    margin-top: 5px;
-}
-
 .coluna-texto {
-    max-width: none;
     width: 100%;
     padding: 20px 0;
 }
 
 .texto .localizacao,
 .texto .informacao {
-    color: #C9A227;
+    color: var(--dourado);
     font-size: 14px;
     margin-bottom: 15px;
 }
 
-/* TÍTULOS E TEXTOS DOS BANNERS */
-
 .texto h1 {
-    color: #F5EFE0;
-    font-family: Georgia, "Times New Roman", Times, serif;
+    color: var(--creme);
+    font-family: var(--fonte-titulo);
     font-size: 42px;
     font-weight: lighter;
-    max-width: none;
-    margin: 0 0 10px;
     line-height: 1.2;
-    text-align: left;
+    margin: 0 0 10px;
     white-space: nowrap;
 }
 
-.texto h1 br {
-    display: block;
-}
-
 .texto h1 + p {
-    color: #F5EFE0;
+    color: var(--creme);
     font-size: 17px;
     line-height: 1.5;
     margin: 0;
-    text-align: left;
     white-space: nowrap;
 }
 
@@ -154,49 +201,229 @@ nav {
     display: flex;
     align-items: center;
     gap: 8px;
-    color: #F5EFE0;
+    color: var(--creme);
     margin-bottom: 20px;
 }
 
 .estrela {
-    color: #C9A227;
+    color: var(--dourado);
 }
-
-/* =========================
-   BOTÕES DO INÍCIO
-========================= */
 
 .botoes-home {
     display: flex;
     gap: 10px;
-    margin-top: 5px;
+    margin-top: 20px;
+}
+
+
+/* =========================
+   5. BOTÕES
+========================= */
+
+/* Base compartilhada pelos botões de link */
+.botao-principal,
+.botao-segundario,
+.avaliar,
+.botao-endereco {
+    display: inline-block;
+    padding: 12px 20px;
+    text-decoration: none;
+    font-size: 13px;
+    border-radius: 8px;
 }
 
 .botao-principal {
-    display: inline-block;
-    background-color: #C9A227;
-    color: #0D0D0D;
-    padding: 12px 20px;
-    text-decoration: none;
-    font-size: 13px;
-    border-radius: 8px;
+    background-color: var(--dourado);
+    color: var(--preto-suave);
 }
 
 .botao-segundario {
+    border: 1px solid var(--dourado);
+    color: var(--dourado-claro);
+}
+
+/* Botões de destaque dentro das páginas */
+.avaliar,
+.botao-endereco {
+    padding: 12px 24px;
+    font-size: 14px;
+    font-weight: bold;
+    background-color: var(--dourado);
+    color: var(--preto-suave);
+    transition: background-color 0.2s ease;
+}
+
+.avaliar:hover,
+.botao-endereco:hover {
+    background-color: var(--dourado-claro);
+}
+
+.botao-endereco {
+    margin-top: 20px;
+}
+
+/* "Pedir agora" no menu */
+.botao-whatsapp {
     display: inline-block;
-    border: 1px solid #C9A227;
-    color: #E8C766;
-    padding: 12px 20px;
+    width: 100px;
+    padding: 10px 18px;
+    background-color: var(--dourado);
+    color: var(--preto);
     text-decoration: none;
-    font-size: 13px;
+    text-align: center;
+    font-size: 12px;
     border-radius: 8px;
 }
+
+/* "Falar no WhatsApp" da faixa de encomenda */
+.botaoWhatsapp {
+    color: var(--dourado);
+    background-color: var(--preto);
+    padding: 12px 20px;
+    text-decoration: none;
+    font-weight: normal;
+    margin: 20px 50px 10px;
+    border-radius: 15px;
+}
+
+/* Botões dos formulários (Contato e Orçamento) */
+.formulario-contato button,
+.formulario-orcamento .botao-principal,
+.formulario-orcamento .botao-whatsapp-form {
+    padding: 14px 28px;
+    border: none;
+    border-radius: 30px;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.formulario-contato button,
+.formulario-orcamento .botao-principal {
+    background-color: var(--dourado);
+    color: var(--preto-suave);
+}
+
+.formulario-contato button:hover,
+.formulario-orcamento .botao-principal:hover {
+    background-color: var(--dourado-hover);
+}
+
+.formulario-orcamento .botao-whatsapp-form {
+    background-color: transparent;
+    color: var(--marrom);
+    border: 1.5px solid var(--dourado);
+}
+
+.formulario-orcamento .botao-whatsapp-form:hover {
+    background-color: var(--dourado-fundo);
+}
+
+.formulario-orcamento .botao-principal:focus-visible,
+.formulario-orcamento .botao-whatsapp-form:focus-visible {
+    outline: 3px solid var(--marrom);
+    outline-offset: 3px;
+}
+
+
+/* =========================
+   6. COMPONENTES COMPARTILHADOS
+========================= */
+
+/* ---------- Cartões: fundo creme + sombra ---------- */
+
+.categorias,
+.cards,
+.card-info,
+.comentarios,
+.novidade-texto,
+.foto-galeria {
+    background-color: var(--creme);
+    box-shadow: var(--sombra);
+}
+
+.card,
+.info,
+.valores,
+.mapa,
+.cartao-fidelidade,
+.formulario-contato,
+.informacoes-contato {
+    background-color: var(--creme);
+    box-shadow: var(--sombra-suave);
+}
+
+/* ---------- Ícone, título e texto dos cartões de categoria/informação ---------- */
+
+.categorias .icone,
+.info .icone {
+    display: block;
+    width: 28px;
+    height: 28px;
+    margin-bottom: 15px;
+    color: var(--marrom);
+}
+
+.categorias h3,
+.info h3 {
+    font-family: var(--fonte-titulo);
+    font-size: 17px;
+    font-weight: normal;
+    color: var(--marrom);
+    margin: 0 0 10px;
+}
+
+.categorias p,
+.info p {
+    color: var(--marrom-medio);
+    font-size: 13px;
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* ---------- Título de seção: rótulo + título ---------- */
+
+.cardapio .subtitulo,
+.novidade > p,
+.comentarios-google .subtitulo,
+.entrevista-audio .informacao {
+    color: var(--marrom);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+}
+
+.cardapio .titulo,
+.novidade h2,
+.imagens h2,
+.comentarios-google .titulo {
+    color: var(--marrom-escuro);
+    font-size: 32px;
+    margin-bottom: 40px;
+}
+
+.legenda {
+    color: var(--marrom-medio);
+    font-size: 12px;
+    margin: 0;
+}
+
+
+/* =========================
+   7. PÁGINAS
+========================= */
+
+/* ---------- 7.1 INÍCIO ---------- */
 
 .info-loja {
     display: flex;
     gap: 25px;
     font-size: 14px;
-    color: #E8C766;
+    color: var(--dourado-claro);
     margin-top: 20px;
 }
 
@@ -206,30 +433,37 @@ nav {
     gap: 6px;
 }
 
+.info-loja .status-aberto {
+    color: #7fd18b;
+}
+
+.info-loja .status-fechado {
+    color: #e08a7a;
+}
+
 .coluna-imagem {
     position: relative;
     max-width: 500px;
 }
 
 .coluna-imagem img {
+    display: block;
     width: 100%;
     height: auto;
-    object-fit: cover;
     border-radius: 16px;
-    display: block;
 }
 
 .citacao {
     position: absolute;
     bottom: -20px;
     left: 20px;
-    background: #F5EFE0;
+    max-width: 280px;
     padding: 10px 30px;
+    background: var(--creme);
     border-radius: 12px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-    max-width: 280px;
     font-style: italic;
-    color: #3D2B1F;
+    color: var(--marrom);
 }
 
 .citacao span {
@@ -237,308 +471,42 @@ nav {
     margin-top: 8px;
     font-style: normal;
     font-size: 12px;
-    color: #3D2B1F;
+    color: var(--marrom);
     opacity: 0.7;
 }
 
-/* =========================
-   CARDÁPIO / CATEGORIAS
-========================= */
+/* Categorias */
 
 .cardapio {
-    background-color: #ebe6c0;
-    color: #000000;
-    padding: 80px 40px;
-    max-width: 1200px;
+    max-width: var(--largura);
     margin: 0 auto;
-}
-
-.cardapio .subtitulo {
-    color: #3D2B1F;
-    font-size: 13px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    margin-bottom: 10px;
-}
-
-.cardapio .titulo {
-    color: #241b15;
-    font-family: Georgia, "Times New Roman", Times, serif;
-    font-size: 32px;
-    font-weight: normal;
-    margin-bottom: 40px;
+    padding: 80px 40px;
 }
 
 .grade {
     display: flex;
     gap: 20px;
-    max-width: 1200px;
+    max-width: var(--largura);
     margin: 0 auto;
 }
 
 .categorias {
-    background-color: #F5EFE0;
-    border-radius: 12px;
+    flex: 1;
     padding: 25px;
-    flex: 1;
-    text-align: left;
-    box-shadow: 0 4px 12px rgb(172, 150, 116);
-}
-
-.categorias .icone {
-    color: #3D2B1F;
-    display: block;
-    width: 28px;
-    height: 28px;
-    margin-bottom: 15px;
-}
-
-.categorias h3 {
-    color: #3D2B1F;
-    font-family: Georgia, "Times New Roman", Times, serif;
-    font-size: 17px;
-    font-weight: normal;
-    margin-bottom: 8px;
-}
-
-.categorias p {
-    color: #6b5c4f;
-    font-size: 13px;
-    line-height: 1.5;
-}
-
-/* =========================
-   CARDÁPIO - PÁGINA
-========================= */
-
-.cardapio-tabela {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 30px;
-    max-width: 1100px;
-    margin: 60px auto;
-    padding: 20px 20px 150px;
-}
-
-.cardapio-tabela h2 {
-    grid-column: 1 / -1;
-    color: #3D2B1F;
-    font-family: Georgia, "Times New Roman", Times, serif;
-    font-size: 30px;
-    margin: 0 0 10px;
-}
-
-.card {
-    background-color: #F5EFE0;
-    border-radius: 20px;
-    padding: 35px 40px;
-    box-shadow: 0 4px 12px rgba(172, 150, 116, 0.2);
-}
-
-.card h3 {
-    font-family: Georgia, "Times New Roman", Times, serif;
-    color: #3D2B1F;
-    font-size: 22px;
-    font-weight: bold;
-    margin: 0 0 25px;
-}
-
-.card ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
-
-.card li {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 15px;
-    padding: 14px 0;
-    border-bottom: 1px solid #e0d8c0;
-    text-align: left;
-}
-
-.card li:last-child {
-    border-bottom: none;
-}
-
-.card li span:first-child {
-    color: #3D2B1F;
-    font-size: 14px;
-}
-
-.card .preco {
-    color: #966545;
-    font-weight: bold;
-    font-size: 14px;
-    margin-left: 20px;
-    white-space: nowrap;
-}
-
-/* =========================
-   SOBRE / QUEM SOMOS
-========================= */
-
-.sobre {
-    display: flex;
-    align-items: flex-start;
-    gap: 60px;
-    max-width: 1200px;
-    margin: 80px auto;
-    padding: 0 40px;
-}
-
-.texto-sobre {
-    flex: 1;
-    padding-top: 10px;
-}
-
-.texto-sobre p {
-    color: #3D2B1F;
-    font-size: 15px;
-    line-height: 1.5;
-    margin-bottom: 20px;
-}
-
-.foto {
-    flex: 1;
-}
-
-.foto img {
-    width: 100%;
-    border-radius: 25px;
-    display: block;
-    box-shadow: 0 4px 12px rgb(172, 150, 116);
-}
-
-/* =========================
-   CARDS DE AVALIAÇÃO
-========================= */
-
-.sobre .grade {
-    display: flex;
-    gap: 15px;
-    margin-top: 20px;
-}
-
-.cards {
-    background-color: #F5EFE0;
     border-radius: 12px;
-    flex: 1;
-    padding: 10px;
-    text-align: center;
-    box-shadow: 0 4px 12px rgb(172, 150, 116);
 }
 
-.cards h2 {
-    font-family: Georgia, "Times New Roman", Times, serif;
-    color: #3D2B1F;
-    font-size: 26px;
-    margin: 0;
-    font-weight: normal;
-}
-
-.cards p {
-    color: #000000;
-    font-size: 12px;
-    margin: 5px 0 0;
-}
-
-/* =========================
-   ÁUDIO
-========================= */
-
-.entrevista-audio {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 60px 40px;
-    text-align: center;
-}
-
-.entrevista-audio .informacao {
-    color: #C9A227;
-    font-size: 14px;
-    margin-bottom: 15px;
-}
-
-.entrevista-audio h2 {
-    color: #3D2B1F;
-    font-family: Georgia, "Times New Roman", Times, serif;
-    font-size: 30px;
-    font-weight: normal;
-}
-
-.entrevista-audio > p:not(.informacao) {
-    color: #3D2B1F;
-    font-size: 15px;
-    line-height: 1.6;
-}
-
-.entrevista-audio audio {
-    margin-top: 20px;
-    width: 100%;
-    max-width: 500px;
-}
-
-/* =========================
-   CARDS DE INFORMAÇÃO
-========================= */
-
-.grade-info {
-    display: flex;
-    gap: 50px;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 60px 20px 150px;
-}
-
-.card-info {
-    background-color: #F5EFE0;
-    border-radius: 25px;
-    flex: 1;
-    padding: 30px 35px;
-    text-align: left;
-    box-shadow: 0 4px 12px rgb(172, 150, 116);
-}
-
-.card-info h3 {
-    font-family: Georgia, "Times New Roman", Times, serif;
-    color: #3D2B1F;
-    font-size: 20px;
-    margin-top: 0;
-    margin-bottom: 12px;
-    text-align: left;
-}
-
-.card-info p {
-    color: #000000;
-    font-size: 14px;
-    line-height: 1.6;
-    text-align: left;
-}
-
-/* =========================
-   GALERIA
-========================= */
+/* Conheça a Cinthiê */
 
 .imagens {
+    max-width: var(--largura);
     margin: 0 auto;
-    max-width: 1200px;
-}
-
-.imagens h2 {
-    color: #241b15;
-    font-family: Georgia, "Times New Roman", Times, serif;
-    font-size: 32px;
-    font-weight: normal;
-    margin-bottom: 40px;
 }
 
 .galeria {
     display: flex;
     gap: 20px;
-    max-width: 1200px;
+    max-width: var(--largura);
     margin: 0 auto;
 }
 
@@ -547,49 +515,29 @@ nav {
     background-color: #ffffff;
     border-radius: 16px;
     overflow: hidden;
-    box-shadow: 0 4px 12px rgb(172, 150, 116);
+    box-shadow: var(--sombra);
 }
 
 .item-galeria img {
+    display: block;
     width: 100%;
     height: 300px;
     object-fit: cover;
-    object-position: center;
-    display: block;
 }
 
 .item-galeria p {
     padding: 5px 20px 20px;
-    color: #6b5c4f;
+    color: var(--marrom-medio);
     font-size: 13px;
     line-height: 1.5;
 }
 
-/* =========================
-   NOVIDADES
-========================= */
+/* Novidades */
 
 .novidade {
-    background-color: #ebe6c0;
-    padding: 80px 40px;
-    max-width: 1200px;
+    max-width: var(--largura);
     margin: 0 auto;
-}
-
-.novidade > p {
-    color: #3D2B1F;
-    font-size: 13px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    margin-bottom: 10px;
-}
-
-.novidade h2 {
-    color: #241b15;
-    font-family: Georgia, "Times New Roman", Times, serif;
-    font-size: 32px;
-    font-weight: normal;
-    margin-bottom: 40px;
+    padding: 80px 40px;
 }
 
 .novidade-conteudo {
@@ -604,22 +552,19 @@ nav {
     height: 500px;
     object-fit: cover;
     border-radius: 16px;
-    box-shadow: 0 4px 12px rgb(172, 150, 116);
+    box-shadow: var(--sombra);
 }
 
 .novidade-texto {
     max-width: 350px;
-    background-color: #F5EFE0;
     padding: 30px;
     border-radius: 16px;
-    box-shadow: 0 4px 12px rgb(172, 150, 116);
 }
 
 .novidade-texto p {
-    color: #6b5c4f;
+    color: var(--marrom-medio);
     font-size: 14px;
     line-height: 1.6;
-    text-align: left;
     margin: 0 0 15px;
 }
 
@@ -634,95 +579,38 @@ nav {
     width: 400px;
     height: 400px;
     padding: 15px;
-    border-radius: 16px;
 }
 
 .card-imagem img {
+    display: block;
     width: 100%;
     height: 100%;
     object-fit: cover;
     border-radius: 10px;
-    display: block;
-    box-shadow: 0 4px 12px rgb(172, 150, 116);
+    box-shadow: var(--sombra);
 }
 
-/* =========================
-   AVALIAÇÕES - HOME
-========================= */
-
-.comentarios-google {
-    background-color: #ebe6c0;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.comentarios-google .subtitulo {
-    color: #3D2B1F;
-    font-size: 13px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    margin-bottom: 10px;
-}
-
-.comentarios-google .titulo {
-    color: #241b15;
-    font-family: Georgia, "Times New Roman", Times, serif;
-    font-size: 32px;
-    font-weight: normal;
-    margin-bottom: 40px;
-}
-
-/* ALTERADO SOMENTE PARA OS CARDS DA HOME */
-
-.grade-google {
-    display: flex;
-    gap: 20px;
-    max-width: 1200px;
-    width: 100%;
-    margin: 0 auto;
-}
-
-.comentarios {
-    background-color: #F5EFE0;
-    border-radius: 12px;
-    padding: 30px;
-    min-height: 300px;
-    flex: 1;
-    width: 100%;
-    text-align: left;
-    box-shadow: 0 4px 12px rgb(172, 150, 116);
-}
-
-.comentarios h3 {
-    font-size: 15px;
-    color: #3D2B1F;
-    line-height: 1.5;
-}
-
-/* =========================
-   ENCOMENDA
-========================= */
+/* Faixa de encomenda */
 
 .encomenda {
-    background-color: #E8C766;
-    color: #0D0D0D;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    max-width: 1200px;
+    max-width: var(--largura);
+    margin: 50px auto 100px;
+    background-color: var(--dourado-claro);
+    color: var(--preto-suave);
     font-weight: bold;
     border-radius: 15px;
-    margin: 50px auto 100px;
 }
 
 .encomenda-texto {
-    position: relative;
     margin: 20px 60px 10px;
     padding: 20px 0;
 }
 
 .encomenda-texto p {
-    font-family: Georgia, "Times New Roman", Times, serif;
+    font-family: var(--fonte-titulo);
     font-weight: lighter;
     font-size: 25px;
     margin: 0;
@@ -734,77 +622,226 @@ nav {
     margin: 5px 0 0;
 }
 
-.botaoWhatsapp {
-    color: #C9A227;
-    background-color: #000000;
-    padding: 12px 20px;
-    text-decoration: none;
-    font-weight: normal;
-    margin: 20px 50px 10px;
-    border-radius: 15px;
+
+/* ---------- 7.2 QUEM SOMOS ---------- */
+
+.sobre {
+    display: flex;
+    align-items: flex-start;
+    gap: 60px;
+    max-width: var(--largura);
+    margin: 80px auto;
+    padding: 0 40px;
 }
 
-/* =========================
-   DELIVERY
-========================= */
+.texto-sobre {
+    flex: 1;
+    padding-top: 10px;
+}
+
+.texto-sobre p {
+    color: var(--marrom);
+    font-size: 15px;
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+
+.foto {
+    flex: 1;
+}
+
+.foto img {
+    display: block;
+    width: 100%;
+    border-radius: 25px;
+    box-shadow: var(--sombra);
+}
+
+.sobre .grade {
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.cards {
+    flex: 1;
+    padding: 10px;
+    border-radius: 12px;
+    text-align: center;
+}
+
+.cards h2 {
+    font-size: 26px;
+    margin: 0;
+}
+
+.cards p {
+    color: var(--preto);
+    font-size: 12px;
+    margin: 5px 0 0;
+}
+
+.entrevista-audio {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 60px 40px;
+    text-align: center;
+}
+
+.entrevista-audio h2 {
+    font-size: 30px;
+}
+
+.entrevista-audio p {
+    color: var(--marrom);
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+.entrevista-audio audio {
+    width: 100%;
+    max-width: 500px;
+    margin-top: 20px;
+}
+
+.grade-info {
+    display: flex;
+    gap: 50px;
+    max-width: var(--largura);
+    margin: 0 auto;
+    padding: 60px 20px 150px;
+}
+
+.card-info {
+    flex: 1;
+    padding: 30px 35px;
+    border-radius: 25px;
+}
+
+.card-info h3 {
+    font-family: var(--fonte-titulo);
+    color: var(--marrom);
+    font-size: 20px;
+    margin: 0 0 12px;
+}
+
+.card-info p {
+    color: var(--preto);
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+
+/* ---------- 7.3 CARDÁPIO ---------- */
+
+.cardapio-tabela {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    max-width: 1100px;
+    margin: 60px auto;
+    padding: 20px 20px 150px;
+}
+
+.cardapio-tabela h2 {
+    grid-column: 1 / -1;
+    font-size: 30px;
+    font-weight: bold;
+    margin: 0 0 10px;
+}
+
+.card {
+    padding: 35px 40px;
+    border-radius: 20px;
+}
+
+.card h3 {
+    font-family: var(--fonte-titulo);
+    color: var(--marrom);
+    font-size: 22px;
+    font-weight: bold;
+    margin: 0 0 25px;
+}
+
+.card li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    padding: 14px 0;
+    border-bottom: 1px solid #e0d8c0;
+}
+
+.card li:last-child {
+    border-bottom: none;
+}
+
+.card li span:first-child {
+    color: var(--marrom);
+    font-size: 14px;
+}
+
+.card .preco {
+    color: var(--preco);
+    font-weight: bold;
+    font-size: 14px;
+    margin-left: 20px;
+    white-space: nowrap;
+}
+
+/* Busca (criada pelo JS) */
+
+.busca-cardapio {
+    grid-column: 1 / -1;
+    display: flex;
+    flex-direction: column;
+}
+
+.busca-cardapio label {
+    font-weight: bold;
+}
+
+.busca-vazia {
+    grid-column: 1 / -1;
+    color: var(--marrom-medio);
+    font-size: 14px;
+    margin: 0;
+}
+
+.card li[hidden] {
+    display: none;
+}
+
+
+/* ---------- 7.4 DELIVERY E "COMO FUNCIONA" ---------- */
 
 .delivery {
     padding-top: 70px;
 }
 
 .delivery h2 {
-    max-width: 1200px;
+    max-width: var(--largura);
     margin: 0 auto 5px;
     padding: 0 20px;
-    color: #3D2B1F;
-    font-family: Georgia, "Times New Roman", Times, serif;
     font-size: 28px;
-    font-weight: normal;
-    text-align: left;
 }
 
 .delivery .grade {
-    max-width: 1200px;
-    margin: 20px auto 60px;
-    padding: 20px 20px 40px;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 30px;
+    margin: 20px auto 60px;
+    padding: 20px 20px 40px;
 }
 
-.delivery .info {
-    background-color: #F5EFE0;
-    border-radius: 20px;
+/* Orçamento: são 3 passos, não 4 */
+#como-funciona .grade {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.info {
     padding: 35px 40px;
-    box-shadow: 0 4px 12px rgba(61, 43, 31, 0.08);
+    border-radius: 20px;
 }
-
-.delivery .info .icone {
-    width: 28px;
-    height: 28px;
-    display: block;
-    margin-bottom: 15px;
-    color: #3D2B1F;
-}
-
-.delivery .info h3 {
-    color: #3D2B1F;
-    font-family: Georgia, "Times New Roman", Times, serif;
-    font-size: 17px;
-    font-weight: normal;
-    margin: 0 0 10px;
-}
-
-.delivery .info p {
-    color: #6b5c4f;
-    font-size: 13px;
-    line-height: 1.5;
-    margin: 0;
-}
-
-/* =========================
-   TAXAS E PRAZOS - DELIVERY
-========================= */
 
 .valores-delivery {
     max-width: 1100px;
@@ -812,28 +849,24 @@ nav {
     padding: 20px 20px 90px;
 }
 
-.valores-delivery h2 {
-    max-width: 1200px;
-    margin: 0 0 30px;
-    padding: 0;
-    color: #3D2B1F;
-    font-family: Georgia, "Times New Roman", Times, serif;
+.valores-delivery h2,
+.fidelidade h2,
+.formulario-contato h2,
+.informacoes-contato h2 {
     font-size: 28px;
-    font-weight: normal;
-    text-align: left;
+    margin: 0 0 30px;
+}
+
+.valores-delivery > p {
+    color: var(--marrom-medio);
+    font-size: 13px;
+    line-height: 1.5;
+    margin-top: 15px;
 }
 
 .valores {
-    background-color: #F5EFE0;
     border-radius: 20px;
     overflow: hidden;
-    box-shadow: 0 4px 12px rgba(61, 43, 31, 0.08);
-}
-
-.valores ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
 }
 
 .valores li {
@@ -841,7 +874,7 @@ nav {
     grid-template-columns: 1fr 1fr 1fr;
     align-items: center;
     padding: 14px 40px;
-    color: #3D2B1F;
+    color: var(--marrom);
     font-size: 13px;
 }
 
@@ -854,122 +887,39 @@ nav {
 }
 
 .valores li.cabecalho {
-    background-color: #C9A227;
+    background-color: var(--dourado);
     padding: 18px 40px;
 }
 
 .valores li.cabecalho span {
-    color: #3D2B1F;
+    color: var(--marrom);
     font-weight: bold;
 }
 
 .valores .valor {
-    color: #966545;
+    color: var(--preco);
     font-weight: bold;
     font-size: 14px;
 }
 
 .valores .tempo {
-    color: #6b5c4f;
+    color: var(--marrom-medio);
 }
 
-.valores-delivery > p {
-    color: #6b5c4f;
-    font-size: 13px;
-    line-height: 1.5;
-    margin-top: 15px;
-}
 
-/* =========================
-   FEEDBACKS
-========================= */
-
-.comentarios-google {
-    background-color: #ebe6c0;
-    padding: 80px 40px 120px;
-    max-width: 1200px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-}
-
-.comentarios-google h2 {
-    grid-column: 1 / -1;
-    color: #3D2B1F;
-    font-family: Georgia, "Times New Roman", serif;
-    font-size: 28px;
-    font-weight: normal;
-    text-align: left;
-    margin: 0 0 5px;
-}
-
-.comentarios .descricao {
-    color: #6b5c4f;
-    font-size: 12px;
-    margin: 0 0 5px;
-}
-
-.comentarios .estrela {
-    display: block;
-    color: #C9A227;
-    margin-bottom: 12px;
-}
-
-.comentarios p {
-    color: #3D2B1F;
-    font-size: 13px;
-    margin: 0;
-    line-height: 1.5;
-}
-
-.site-comentarios {
-    grid-column: 1 / -1;
-    text-align: left;
-    margin-top: 10px;
-}
-
-.avaliar {
-    display: inline-block;
-    background-color: #C9A227;
-    color: #0D0D0D;
-    padding: 12px 24px;
-    text-decoration: none;
-    font-size: 14px;
-    font-weight: bold;
-    border-radius: 8px;
-}
-
-.avaliar:hover {
-    background-color: #E8C766;
-}
-
-/* =========================
-   SELO DE FIDELIDADE
-========================= */
+/* ---------- 7.5 FIDELIDADE ---------- */
 
 .fidelidade {
-    padding: 80px 40px 120px;
-    max-width: 1200px;
+    max-width: var(--largura);
     margin: 0 auto;
-}
-
-.fidelidade h2 {
-    color: #3D2B1F;
-    font-family: Georgia, "Times New Roman", Times, serif;
-    font-size: 28px;
-    font-weight: normal;
-    margin: 0 0 30px;
-    text-align: left;
+    padding: 80px 40px 120px;
 }
 
 .cartao-fidelidade {
-    background-color: #F5EFE0;
-    border-radius: 20px;
-    padding: 20px 20px 10px;
-    box-shadow: 0 4px 12px rgba(172, 150, 116, 0.2);
     max-width: 900px;
     margin: 0 auto;
+    padding: 20px 20px 10px;
+    border-radius: 20px;
 }
 
 .cartao-fidelidade .topo {
@@ -980,15 +930,15 @@ nav {
 }
 
 .cartao-fidelidade .topo h3 {
-    font-family: Georgia, "Times New Roman", Times, serif;
+    font-family: var(--fonte-titulo);
     font-size: 22px;
-    color: #3D2B1F;
     font-weight: normal;
+    color: var(--marrom);
     margin: 0;
 }
 
 .contagem {
-    color: #E8C766;
+    color: var(--marrom);
     font-size: 12px;
     font-weight: bold;
     letter-spacing: 1px;
@@ -998,59 +948,66 @@ nav {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     gap: 25px;
-    margin-bottom: 35px;
     max-width: 800px;
+    margin: 0 auto 35px;
 }
 
 .selo,
 .selo-ok {
-    aspect-ratio: 1 / 1;
-    border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
     font-size: 30px;
+    color: var(--dourado);
+    cursor: pointer;
+    transition: transform 0.15s ease;
 }
 
 .selo {
-    border: 2px dashed #6b5c4f;
-    color: #C9A227;
+    border: 2px dashed var(--marrom-medio);
 }
 
 .selo-ok {
-    border: 2px dashed #C9A227;
-    background-color: #f0e0b8;
-    color: #C9A227;
+    border: 2px dashed var(--dourado);
+    background-color: var(--dourado-fundo);
 }
 
-.legenda {
-    color: #6b5c4f;
-    font-size: 12px;
-    margin: 0;
+.selo:hover,
+.selo-ok:hover {
+    transform: scale(1.05);
 }
 
-.banner:has(.informacao) .botoes-home {
-    margin-top: 20px;
+.selo:focus-visible,
+.selo-ok:focus-visible {
+    outline: 3px solid var(--marrom);
+    outline-offset: 3px;
 }
 
-/* =========================
-   GALERIA - PÁGINA
-========================= */
+.mensagem-fidelidade {
+    color: var(--marrom);
+    font-size: 14px;
+    font-weight: bold;
+    margin: 0 0 10px;
+}
+
+.mensagem-fidelidade:empty {
+    display: none;
+}
+
+
+/* ---------- 7.6 GALERIA ---------- */
 
 .galeria-pagina {
-    background-color: #ebe6c0;
-    padding: 80px 40px 120px;
-    max-width: 1200px;
+    max-width: var(--largura);
     margin: 0 auto;
+    padding: 80px 40px 120px;
 }
 
 .galeria-pagina h2 {
-    color: #3D2B1F;
-    font-family: Georgia, "Times New Roman", Times, serif;
     font-size: 32px;
-    font-weight: normal;
     margin: 0 0 10px;
-    text-align: left;
 }
 
 .grade-galeria {
@@ -1061,215 +1018,531 @@ nav {
 
 .grade-galeria h3 {
     grid-column: 1 / -1;
-    color: #3D2B1F;
-    font-family: Georgia, "Times New Roman", Times, serif;
+    font-family: var(--fonte-titulo);
     font-size: 18px;
     font-weight: normal;
+    color: var(--marrom);
     margin: 0 0 5px;
 }
 
 .foto-galeria {
-    background-color: #F5EFE0;
     border-radius: 16px;
     overflow: hidden;
-    box-shadow: 0 4px 12px rgb(172, 150, 116);
 }
 
 .foto-galeria img {
+    display: block;
     width: 100%;
     height: 280px;
     object-fit: cover;
-    object-position: center;
-    display: block;
+    cursor: zoom-in;
 }
-/* =========================
-   CONTATO
-========================= */
 
-main:has(.formulario-contato) {
-    display: grid;
-    grid-template-columns: 1.4fr 1fr;
-    gap: 30px;
-    align-items: start;
-    width: 100%;
-    max-width: 1200px;
-    box-sizing: border-box;
-    padding: 80px 40px 120px;
+/* Ampliação (criada pelo JS) */
+
+.lightbox {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.88);
+}
+
+.lightbox[hidden] {
+    display: none;
+}
+
+.lightbox img {
+    max-width: 100%;
+    max-height: 80vh;
+    border-radius: 12px;
+}
+
+.lightbox p {
+    color: var(--creme);
+    font-size: 14px;
+    margin: 0;
+    text-align: center;
+}
+
+.lightbox-fechar {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 44px;
+    height: 44px;
+    background-color: var(--dourado);
+    border: none;
+    border-radius: 50%;
+    color: var(--preto-suave);
+    font-size: 18px;
+    cursor: pointer;
+}
+
+body.lightbox-aberto {
+    overflow: hidden;
+}
+
+
+/* ---------- 7.7 FEEDBACKS (também usado no Início) ---------- */
+
+.comentarios-google {
+    max-width: var(--largura);
     margin: 0 auto;
+    padding: 80px 40px 120px;
 }
 
-/* ---------- Cartões ---------- */
-
-.formulario-contato,
-.informacoes-contato {
-    min-width: 0;
-    box-sizing: border-box;
-    background-color: #F5EFE0;
-    border-radius: 20px;
-    padding: 30px;
-    box-shadow: 0 4px 12px rgba(172, 150, 116, 0.2);
+/* Início: 3 cartões lado a lado */
+.grade-google {
+    display: flex;
+    gap: 20px;
 }
 
-/* ---------- Títulos ---------- */
+/* Página de feedbacks: grade de 3 colunas */
+.comentarios-pagina {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
 
-.formulario-contato h2,
-.informacoes-contato h2 {
-    color: #3D2B1F;
-    font-family: Georgia, "Times New Roman", Times, serif;
+.comentarios-pagina h2 {
+    grid-column: 1 / -1;
     font-size: 28px;
-    font-weight: normal;
-    margin: 0 0 30px;
-    text-align: left;
+    margin: 0 0 5px;
 }
 
-/* ---------- Formulário ---------- */
-
-.formulario-contato .campo {
-    margin-bottom: 20px;
+.comentarios {
+    flex: 1;
+    min-height: 300px;
+    padding: 30px;
+    border-radius: 12px;
 }
 
-.formulario-contato label {
+.comentarios h3 {
+    font-size: 15px;
+    color: var(--marrom);
+    line-height: 1.5;
+}
+
+.comentarios p {
+    color: var(--marrom);
+    font-size: 13px;
+    line-height: 1.5;
+    margin: 0;
+}
+
+.comentarios .descricao {
+    color: var(--marrom-medio);
+    font-size: 12px;
+    margin: 0 0 5px;
+}
+
+.comentarios .estrela {
     display: block;
-    color: #3D2B1F;
+    margin-bottom: 12px;
+}
+
+.site-comentarios {
+    grid-column: 1 / -1;
+    margin-top: 10px;
+}
+
+
+/* ---------- 7.8 FORMULÁRIOS ---------- */
+
+/* Rótulos */
+.formulario-contato label,
+.formulario-orcamento .campo > label,
+.formulario-orcamento .opcoes-grupo legend,
+.busca-cardapio label {
+    display: block;
+    padding: 0;
+    margin: 0;
+    color: var(--marrom);
+    font-family: Arial, Helvetica, sans-serif;
     font-size: 14px;
 }
 
+/* Campos */
 .formulario-contato input,
 .formulario-contato select,
-.formulario-contato textarea {
+.formulario-contato textarea,
+.formulario-orcamento input:not([type="radio"]),
+.formulario-orcamento select,
+.formulario-orcamento textarea,
+.busca-cardapio input {
     display: block;
     width: 100%;
-    box-sizing: border-box;
     margin-top: 8px;
     padding: 12px 14px;
-    background-color: #FFFAF0;
-    border: 1px solid #D8C9A8;
+    background-color: var(--campo);
+    border: 1px solid var(--borda);
     border-radius: 12px;
-    color: #3D2B1F;
+    color: var(--marrom);
     font-family: inherit;
     font-size: 14px;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
-.formulario-contato textarea {
+.formulario-contato textarea,
+.formulario-orcamento textarea {
     resize: vertical;
     min-height: 120px;
 }
 
-.formulario-contato input::placeholder,
-.formulario-contato textarea::placeholder {
-    color: #6B5C4F;
+.formulario-contato ::placeholder,
+.formulario-orcamento ::placeholder {
+    color: var(--marrom-medio);
     opacity: 0.7;
 }
 
 .formulario-contato input:focus,
 .formulario-contato select:focus,
-.formulario-contato textarea:focus {
+.formulario-contato textarea:focus,
+.formulario-orcamento input:focus,
+.formulario-orcamento select:focus,
+.formulario-orcamento textarea:focus,
+.busca-cardapio input:focus {
     outline: none;
-    border-color: #C9A227;
-    box-shadow: 0 0 0 3px rgba(201, 162, 39, 0.2);
+    border-color: var(--dourado);
+    box-shadow: 0 0 0 3px rgba(201, 162, 39, 0.25);
 }
 
-/* ---------- Botão ---------- */
-
-.formulario-contato button {
-    background-color: #C9A227;
-    color: #FFFFFF;
-    border: none;
-    border-radius: 30px;
-    padding: 12px 28px;
-    font-size: 14px;
-    font-weight: bold;
-    letter-spacing: 1px;
-    cursor: pointer;
-    transition: background-color 0.2s ease;
+/* Só mostra o erro depois que a pessoa mexeu no campo */
+.formulario-orcamento input:user-invalid,
+.formulario-orcamento select:user-invalid,
+.formulario-orcamento textarea:user-invalid {
+    border-color: var(--erro);
+    box-shadow: 0 0 0 3px rgba(179, 64, 42, 0.15);
 }
 
-.formulario-contato button:hover {
-    background-color: #B08E1F;
+/* Contato */
+
+.contato-grade {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 30px;
+    align-items: start;
+    width: 100%;
+    max-width: var(--largura);
+    margin: 0 auto;
+    padding: 80px 40px 120px;
 }
 
-/* ---------- Informações de contato ---------- */
+.formulario-contato,
+.informacoes-contato {
+    min-width: 0;
+    padding: 30px;
+    border-radius: 20px;
+}
 
-.informacoes-contato .item-contato {
+.formulario-contato .campo {
+    margin-bottom: 20px;
+}
+
+.item-contato:not(:last-child) {
     margin-bottom: 25px;
 }
 
-.informacoes-contato .item-contato:last-child {
-    margin-bottom: 0;
-}
-
-.informacoes-contato .item-contato h3 {
-    color: #6b4b35;
+.item-contato h3 {
+    color: var(--marrom);
     font-size: 14px;
     font-weight: bold;
     margin: 0 0 10px;
 }
 
-/* Ícones SVG ao lado dos textos */
-
-.informacoes-contato .item-contato p {
+.item-contato p {
     display: flex;
     align-items: center;
     gap: 10px;
     margin: 0;
-    color: #291e14;
+    color: var(--marrom);
     font-size: 14px;
     line-height: 1.6;
     overflow-wrap: anywhere;
 }
 
-.informacoes-contato .item-contato p svg {
+.item-contato p svg {
     display: block;
     width: 20px;
     height: 20px;
     flex-shrink: 0;
-    color: #1b0e07;
+    color: var(--marrom);
 }
 
-/* ---------- Responsivo ---------- */
+/* Orçamento */
 
-@media (max-width: 800px) {
-    main:has(.formulario-contato) {
-        grid-template-columns: 1fr;
-        gap: 24px;
-        padding: 40px 20px 80px;
-    }
-
-    .formulario-contato,
-    .informacoes-contato {
-        padding: 24px;
-    }
-
-    .formulario-contato h2,
-    .informacoes-contato h2 {
-        font-size: 24px;
-        margin-bottom: 24px;
-    }
+#formulario .cartao-fidelidade {
+    padding: 35px 40px 25px;
 }
 
-@media (max-width: 400px) {
-    main:has(.formulario-contato) {
-        padding: 30px 14px 60px;
-    }
-
-    .formulario-contato,
-    .informacoes-contato {
-        padding: 18px;
-    }
+#formulario .cartao-fidelidade .topo {
+    margin-bottom: 25px;
+    flex-wrap: wrap;
+    gap: 8px;
 }
 
-/* =========================
-   TERMOS E CONDIÇÕES
-========================= */
+#formulario .cartao-fidelidade > .legenda {
+    margin-top: 22px;
+    text-align: center;
+}
+
+.obrigatorio-legenda {
+    color: var(--marrom-medio);
+    font-size: 12px;
+}
+
+.obrigatorio-legenda span,
+.formulario-orcamento .obrigatorio {
+    color: var(--erro);
+    font-weight: bold;
+}
+
+.formulario-orcamento fieldset {
+    border: none;
+    margin: 0;
+    padding: 0;
+    min-width: 0;
+}
+
+.formulario-orcamento .grupo {
+    padding: 0 0 25px;
+    margin-bottom: 25px;
+    border-bottom: 1px dashed var(--borda);
+}
+
+.formulario-orcamento .grupo legend {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 0;
+    margin-bottom: 18px;
+    color: var(--marrom);
+    font-family: var(--fonte-titulo);
+    font-size: 18px;
+}
+
+.formulario-orcamento .numero {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background-color: var(--dourado);
+    color: var(--preto-suave);
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.formulario-orcamento .linha {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.formulario-orcamento .linha:last-child {
+    margin-bottom: 0;
+}
+
+.formulario-orcamento .campo {
+    min-width: 0;
+}
+
+.formulario-orcamento .dica,
+.formulario-orcamento .contador {
+    display: block;
+    margin-top: 6px;
+    color: var(--marrom-medio);
+    font-size: 12px;
+    line-height: 1.4;
+}
+
+.formulario-orcamento .contador {
+    text-align: right;
+}
+
+.formulario-orcamento .contador.limite {
+    color: var(--erro);
+    font-weight: bold;
+}
+
+/* Retirada / Delivery (botões de escolha) */
+
+.formulario-orcamento .opcoes {
+    display: flex;
+    gap: 10px;
+    margin-top: 8px;
+}
+
+.formulario-orcamento .opcao {
+    flex: 1;
+    position: relative;
+    cursor: pointer;
+}
+
+.formulario-orcamento .opcao input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.formulario-orcamento .opcao span {
+    display: block;
+    padding: 12px 14px;
+    text-align: center;
+    background-color: var(--campo);
+    border: 1px solid var(--borda);
+    border-radius: 12px;
+    color: var(--marrom);
+    font-size: 14px;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.formulario-orcamento .opcao:hover span {
+    border-color: var(--dourado);
+}
+
+.formulario-orcamento .opcao input:checked + span {
+    background-color: var(--dourado-fundo);
+    border-color: var(--dourado);
+    font-weight: bold;
+}
+
+.formulario-orcamento .opcao input:focus-visible + span {
+    outline: 3px solid var(--marrom);
+    outline-offset: 2px;
+}
+
+.formulario-orcamento .acoes-formulario {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 5px;
+}
+
+.formulario-orcamento .status-formulario {
+    margin: 18px 0 0;
+    padding: 12px 16px;
+    background-color: var(--dourado-fundo);
+    border-left: 4px solid var(--dourado);
+    border-radius: 8px;
+    color: var(--marrom);
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+
+/* ---------- 7.9 ENDEREÇO ---------- */
+
+.pagina-endereco {
+    background-color: var(--creme);
+}
+
+.pagina-endereco .banner {
+    padding: 50px 40px;
+    gap: 0;
+}
+
+.pagina-endereco .texto h1,
+.pagina-endereco .texto h1 + p {
+    white-space: normal;
+}
+
+.endereco-grade {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    align-items: start;
+    gap: 32px;
+    max-width: var(--largura);
+    margin: 0 auto;
+    padding: 40px 20px 100px;
+}
+
+.endereco-grade > h2 {
+    grid-column: 1 / -1;
+    font-size: 30px;
+    margin: 0 0 5px;
+}
+
+.endereco-grade .mapa {
+    min-width: 0;
+    overflow: hidden;
+    border-radius: 20px;
+}
+
+.endereco-grade .mapa iframe {
+    display: block;
+    width: 100%;
+    height: 450px;
+    border: 0;
+}
+
+.endereco-grade .grade {
+    flex-direction: column;
+    gap: 16px;
+    min-width: 0;
+    margin: 0;
+    max-width: none;
+}
+
+.endereco-grade .categorias {
+    display: grid;
+    grid-template-columns: 28px 1fr;
+    column-gap: 12px;
+    align-items: start;
+    min-width: 0;
+    padding: 24px;
+    background-color: #FFFCF7;
+    border: 1px solid #E5D8BE;
+    border-radius: 20px;
+    box-shadow: var(--sombra-suave);
+}
+
+.endereco-grade .categorias svg {
+    grid-column: 1;
+    grid-row: 1 / span 2;
+    width: 22px;
+    height: 22px;
+    color: var(--dourado);
+}
+
+.endereco-grade .categorias h3 {
+    grid-column: 2;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    margin: 0 0 8px;
+}
+
+.endereco-grade .categorias p {
+    grid-column: 2;
+    line-height: 1.6;
+    overflow-wrap: anywhere;
+}
+
+
+/* ---------- 7.10 TERMOS E POLÍTICA ---------- */
 
 .termo {
     max-width: 1000px;
     margin: 0 auto;
     padding: 70px 40px 120px;
-}
-
-.termo .texto {
-    width: 100%;
 }
 
 .termo ol {
@@ -1278,41 +1551,32 @@ main:has(.formulario-contato) {
 }
 
 .termo li {
-    color: #3D2B1F;
+    color: var(--marrom);
     padding-left: 5px;
     margin-bottom: 35px;
 }
 
-.termo article {
-    background: none;
-    padding: 0;
-    box-shadow: none;
-}
-
 .termo h2 {
-    color: #3D2B1F;
-    font-family: Georgia, "Times New Roman", Times, serif;
     font-size: 24px;
     font-weight: bold;
     margin: 0 0 12px;
-    text-align: left;
 }
 
 .termo .texto-termo {
-    color: #6b5c4f;
+    color: var(--marrom-medio);
     font-size: 15px;
     line-height: 1.7;
     margin: 0;
-    text-align: left;
 }
 
+
 /* =========================
-   FOOTER
+   8. RODAPÉ
 ========================= */
 
 footer {
-    background-color: #0D0D0D;
-    color: #F5EFE0;
+    background-color: var(--preto-suave);
+    color: var(--creme);
     padding: 50px 60px;
 }
 
@@ -1325,16 +1589,14 @@ footer {
 }
 
 .informações h3 {
-    color: #E8C766;
+    color: var(--dourado-claro);
     font-size: 12px;
     margin-bottom: 15px;
 }
 
 .marca h3 {
-    color: #E8C766;
-    font-family: Georgia, "Times New Roman", Times, serif;
+    font-family: var(--fonte-titulo);
     font-size: 20px;
-    margin-bottom: 15px;
 }
 
 .marca > p {
@@ -1353,23 +1615,21 @@ footer {
 
 .marca .informacao svg {
     flex-shrink: 0;
-    color: #E8C766;
     width: 18px;
     height: 18px;
+    color: var(--dourado-claro);
 }
 
 .marca .informacao p {
     margin: 0;
-    color: #F5EFE0;
     font-size: 12px;
     line-height: 1.5;
-    max-width: none;
 }
 
 .navegação a,
 .institucional a {
     display: block;
-    color: #F5EFE0;
+    color: var(--creme);
     text-decoration: none;
     font-size: 13px;
     margin-bottom: 12px;
@@ -1377,269 +1637,190 @@ footer {
 
 .navegação a:hover,
 .institucional a:hover {
-    color: #E8C766;
+    color: var(--dourado-claro);
 }
+
 
 /* =========================
-   AJUSTE DOS CARDS DA HOME
-   NÃO ALTERA A FEEDBACKS
+   9. EFEITOS E ELEMENTOS CRIADOS PELO JAVASCRIPT
 ========================= */
 
-.comentarios-google:has(.grade-google) {
-    background-color: #ebe6c0;
-    padding: 80px 40px 120px;
-    max-width: 1200px;
-    margin: 0 auto;
-    display: block;
+/* ---------- Barra de progresso de leitura ---------- */
+
+.barra-progresso {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 4px;
+    z-index: 1100;
+    background-color: var(--dourado);
 }
 
-.comentarios-google:has(.grade-google) .grade-google {
+/* ---------- Barra de navegação flutuante ---------- */
+
+.barra-flutuante {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 900;
     display: flex;
+    align-items: center;
+    justify-content: space-between;
     gap: 20px;
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
+    padding: 10px 40px;
+    background-color: var(--preto-suave);
+    border-bottom: 1px solid rgba(232, 199, 102, 0.3);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
+    transform: translateY(-100%);
+    visibility: hidden;
+    transition: transform 0.3s ease, visibility 0.3s ease;
 }
 
-.comentarios-google:has(.grade-google) .comentarios {
-    flex: 1;
-    width: 100%;
-    min-height: 300px;
-    padding: 30px;
-    background-color: #F5EFE0;
-    border-radius: 12px;
-    text-align: left;
-    box-shadow: 0 4px 12px rgb(172, 150, 116);
+.barra-flutuante.visivel {
+    transform: translateY(0);
+    visibility: visible;
 }
 
-.comentarios-google:has(.grade-google) .comentarios h3 {
-    font-size: 15px;
-    color: #3D2B1F;
-    line-height: 1.5;
-}
-
-.comentarios-google:has(.grade-google) .comentarios .estrela {
+.flutuante-logo img {
     display: block;
-    color: #C9A227;
-    margin-bottom: 12px;
+    max-width: 60px;
+    height: auto;
 }
 
-.comentarios-google:has(.grade-google) .comentarios p {
-    color: #3D2B1F;
-    font-size: 13px;
-    margin: 0;
-    line-height: 1.5;
+.flutuante-links {
+    display: flex;
+    gap: 22px;
 }
+
+.flutuante-links a {
+    color: var(--creme);
+    text-decoration: none;
+    font-size: 13px;
+}
+
+.flutuante-links a:hover,
+.flutuante-links a.ativo {
+    color: var(--dourado);
+}
+
+.barra-flutuante .botao-whatsapp {
+    padding: 8px 14px;
+}
+
+/* ---------- Botão voltar ao topo ---------- */
+
+.voltar-topo {
+    position: fixed;
+    right: 24px;
+    bottom: 24px;
+    z-index: 800;
+    width: 46px;
+    height: 46px;
+    border: none;
+    border-radius: 50%;
+    background-color: var(--dourado);
+    color: var(--preto-suave);
+    font-size: 22px;
+    line-height: 1;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease, background-color 0.2s ease;
+}
+
+.voltar-topo.visivel {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.voltar-topo:hover {
+    background-color: var(--dourado-claro);
+}
+
+.voltar-topo:focus-visible {
+    outline: 3px solid var(--marrom);
+    outline-offset: 3px;
+}
+
+/* ---------- Transição entre páginas ---------- */
+
+@keyframes pagina-entrar {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+body.pagina-entrando {
+    animation: pagina-entrar 0.45s ease;
+}
+
+body.saindo {
+    opacity: 0;
+    transition: opacity 0.25s ease;
+}
+
+/* ---------- Cartões sobem levemente ao passar o mouse ---------- */
+
+.card,
+.categorias,
+.info,
+.card-info,
+.comentarios,
+.item-galeria,
+.foto-galeria {
+    transition: transform 0.2s ease;
+}
+
+.card:hover,
+.categorias:hover,
+.info:hover,
+.card-info:hover,
+.comentarios:hover,
+.item-galeria:hover,
+.foto-galeria:hover {
+    transform: translateY(-4px);
+}
+
+/* ---------- Aparecer ao rolar (precisa ficar DEPOIS dos cartões) ---------- */
+
+.reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.reveal.visivel {
+    opacity: 1;
+    transform: translateY(0);
+}
+
 
 /* =========================
-   PÁGINA ENDEREÇO
+   10. RESPONSIVO
 ========================= */
 
-body:has(.endereco-grade) {
-    background-color: #F5EFE0;
-}
+@media (max-width: 1000px) {
 
-/* Banner do endereço */
-body:has(.endereco-grade) .banner {
-    max-width: 1200px;
-    padding: 50px 40px;
-    gap: 0;
-}
-
-body:has(.endereco-grade) .coluna-texto {
-    padding: 20px 0;
-}
-
-body:has(.endereco-grade) .texto h1 {
-    white-space: normal;
-    font-size: 42px;
-    line-height: 1.2;
-}
-
-body:has(.endereco-grade) .texto h1 + p {
-    white-space: normal;
-}
-
-/* Botão Traçar Rota */
-.botao-endereco {
-    display: inline-block;
-    margin-top: 20px;
-    padding: 12px 24px;
-    background-color: #C9A227;
-    color: #0D0D0D;
-    text-decoration: none;
-    font-size: 14px;
-    font-weight: bold;
-    border-radius: 8px;
-    transition: background-color 0.2s ease;
-}
-
-.botao-endereco:hover {
-    background-color: #E8C766;
-}
-
-/* Área principal: mapa e informações */
-.endereco-grade {
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    align-items: start;
-    gap: 32px;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 40px 20px 100px;
-}
-
-.endereco-grade > h2 {
-    grid-column: 1 / -1;
-    color: #3D2B1F;
-    font-family: Georgia, "Times New Roman", Times, serif;
-    font-size: 30px;
-    font-weight: normal;
-    margin: 0 0 5px;
-}
-
-/* Mapa */
-.endereco-grade .mapa {
-    min-width: 0;
-    overflow: hidden;
-    border-radius: 20px;
-    background-color: #F5EFE0;
-    box-shadow: 0 4px 12px rgba(172, 150, 116, 0.2);
-}
-
-.endereco-grade .mapa iframe {
-    display: block;
-    width: 100%;
-    height: 450px;
-    border: 0;
-}
-
-/* Cards de informações */
-.endereco-grade .grade {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    min-width: 0;
-    margin: 0;
-    padding: 0;
-    max-width: none;
-}
-
-.endereco-grade .categorias {
-    display: grid;
-    grid-template-columns: 28px 1fr;
-    column-gap: 12px;
-    align-items: start;
-    min-width: 0;
-    padding: 24px;
-    background-color: #FFFCF7;
-    border: 1px solid #E5D8BE;
-    border-radius: 20px;
-    box-shadow: 0 4px 12px rgba(172, 150, 116, 0.12);
-    text-align: left;
-}
-
-.endereco-grade .categorias svg {
-    grid-column: 1;
-    grid-row: 1 / span 2;
-    width: 22px;
-    height: 22px;
-    color: #C9A227;
-}
-
-.endereco-grade .categorias h3 {
-    grid-column: 2;
-    color: #3D2B1F;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 14px;
-    font-weight: bold;
-    margin: 0 0 8px;
-}
-
-.endereco-grade .categorias p {
-    grid-column: 2;
-    color: #6b5c4f;
-    font-size: 13px;
-    line-height: 1.6;
-    margin: 0;
-    overflow-wrap: anywhere;
-}
-
-/* Responsividade */
-@media (max-width: 800px) {
-    body:has(.endereco-grade) .banner {
-        padding: 35px 20px;
+    /* NOVO: permite quebra de linha nos banners em telas médias/pequenas */
+    .texto h1,
+    .texto h1 + p {
+        white-space: normal;
     }
-
-    body:has(.endereco-grade) .texto h1 {
-        font-size: 32px;
-    }
-
-    .endereco-grade {
-        grid-template-columns: 1fr;
-        gap: 24px;
-        padding: 30px 20px 70px;
-    }
-
-    .endereco-grade .mapa iframe {
-        height: 350px;
-    }
-
-    .endereco-grade .grade {
-        display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 14px;
-    }
-
-    .endereco-grade .categorias {
-        padding: 20px;
-    }
-}
-
-@media (max-width: 480px) {
-    body:has(.endereco-grade) .texto h1 {
-        font-size: 28px;
-    }
-
-    .endereco-grade {
-        padding: 25px 14px 50px;
-    }
-
-    .endereco-grade .mapa iframe {
-        height: 300px;
-    }
-
-    .endereco-grade .grade {
-        grid-template-columns: 1fr;
-    }
-}
-
-/* ---------- Status da loja ---------- */
-
-.info-loja .status-aberto {
-    color: #7fd18b;
-}
-
-.info-loja .status-fechado {
-    color: #e08a7a;
-}
-
-/* ---------- Menu responsivo ---------- */
-
-.menu-toggle {
-    display: none;
-    background: none;
-    border: 1px solid #C9A227;
-    border-radius: 8px;
-    color: #E8C766;
-    font-size: 20px;
-    line-height: 1;
-    padding: 8px 12px;
-    cursor: pointer;
 }
 
 @media (max-width: 900px) {
-    nav {
+
+    /* Menu responsivo */
+    header nav {
         flex-wrap: wrap;
         gap: 15px;
         padding-left: 20px;
@@ -1676,226 +1857,7 @@ body:has(.endereco-grade) .texto h1 + p {
     .menu a {
         font-size: 15px;
     }
-}
 
-/* ---------- Busca no cardápio ---------- */
-
-.busca-cardapio {
-    grid-column: 1 / -1;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-}
-
-.busca-cardapio label {
-    color: #3D2B1F;
-    font-size: 14px;
-    font-weight: bold;
-}
-
-.busca-cardapio input {
-    width: 100%;
-    padding: 12px 14px;
-    background-color: #FFFAF0;
-    border: 1px solid #D8C9A8;
-    border-radius: 12px;
-    color: #3D2B1F;
-    font-family: inherit;
-    font-size: 14px;
-}
-
-.busca-cardapio input:focus {
-    outline: none;
-    border-color: #C9A227;
-    box-shadow: 0 0 0 3px rgba(201, 162, 39, 0.2);
-}
-
-.busca-vazia {
-    grid-column: 1 / -1;
-    color: #6b5c4f;
-    font-size: 14px;
-    margin: 0;
-}
-
-.card[hidden],
-.card li[hidden],
-.busca-vazia[hidden] {
-    display: none;
-}
-
-/* ---------- Cartão de fidelidade ---------- */
-
-.selo,
-.selo-ok {
-    cursor: pointer;
-    transition: transform 0.15s ease;
-}
-
-.selo:hover,
-.selo-ok:hover {
-    transform: scale(1.05);
-}
-
-.selo:focus-visible,
-.selo-ok:focus-visible {
-    outline: 3px solid #3D2B1F;
-    outline-offset: 3px;
-}
-
-.mensagem-fidelidade {
-    color: #3D2B1F;
-    font-size: 14px;
-    font-weight: bold;
-    margin: 0 0 10px;
-}
-
-.mensagem-fidelidade:empty {
-    display: none;
-}
-
-/* ---------- Galeria com ampliação ---------- */
-
-.foto-galeria img {
-    cursor: zoom-in;
-}
-
-.lightbox {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 1000;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-    padding: 20px;
-    background-color: rgba(0, 0, 0, 0.88);
-}
-
-.lightbox[hidden] {
-    display: none;
-}
-
-.lightbox img {
-    max-width: 100%;
-    max-height: 80vh;
-    border-radius: 12px;
-}
-
-.lightbox p {
-    color: #F5EFE0;
-    font-size: 14px;
-    margin: 0;
-    text-align: center;
-}
-
-.lightbox-fechar {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    width: 44px;
-    height: 44px;
-    background-color: #C9A227;
-    border: none;
-    border-radius: 50%;
-    color: #0D0D0D;
-    font-size: 18px;
-    cursor: pointer;
-}
-
-body.lightbox-aberto {
-    overflow: hidden;
-}
-
-/* =========================
-   EFEITOS DE NAVEGAÇÃO
-   (colar no final do style.css)
-========================= */
-
-/* ---------- Sublinhado animado no menu ---------- */
-
-.menu a {
-    padding-bottom: 4px;
-    background-image: linear-gradient(#C9A227, #C9A227);
-    background-repeat: no-repeat;
-    background-position: 0 100%;
-    background-size: 0 2px;
-    transition: background-size 0.3s ease, color 0.2s ease;
-}
-
-.menu a:hover,
-.menu a.ativo {
-    background-size: 100% 2px;
-}
-
-/* ---------- Barra de progresso de leitura ---------- */
-
-.barra-progresso {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 0;
-    height: 4px;
-    z-index: 1100;
-    background-color: #C9A227;
-}
-
-/* ---------- Barra de navegação flutuante ---------- */
-
-.barra-flutuante {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 900;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 20px;
-    padding: 10px 40px;
-    background-color: #0D0D0D;
-    border-bottom: 1px solid rgba(232, 199, 102, 0.3);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
-    transform: translateY(-100%);
-    visibility: hidden;
-    transition: transform 0.3s ease, visibility 0.3s ease;
-}
-
-.barra-flutuante.visivel {
-    transform: translateY(0);
-    visibility: visible;
-}
-
-.flutuante-logo img {
-    display: block;
-    max-width: 60px;
-    height: auto;
-}
-
-.flutuante-links {
-    display: flex;
-    gap: 22px;
-}
-
-.flutuante-links a {
-    color: #F5EFE0;
-    text-decoration: none;
-    font-size: 13px;
-}
-
-.flutuante-links a:hover,
-.flutuante-links a.ativo {
-    color: #C9A227;
-}
-
-.barra-flutuante .botao-whatsapp {
-    padding: 8px 14px;
-}
-
-@media (max-width: 900px) {
     .barra-flutuante {
         padding: 10px 20px;
     }
@@ -1903,408 +1865,214 @@ body.lightbox-aberto {
     .flutuante-links {
         display: none;
     }
-}
 
-/* ---------- Botão voltar ao topo ---------- */
-
-.voltar-topo {
-    position: fixed;
-    right: 24px;
-    bottom: 24px;
-    z-index: 800;
-    width: 46px;
-    height: 46px;
-    border: none;
-    border-radius: 50%;
-    background-color: #C9A227;
-    color: #0D0D0D;
-    font-size: 22px;
-    line-height: 1;
-    cursor: pointer;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(10px);
-    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease, background-color 0.2s ease;
-}
-
-.voltar-topo.visivel {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
-}
-
-.voltar-topo:hover {
-    background-color: #E8C766;
-}
-
-.voltar-topo:focus-visible {
-    outline: 3px solid #3D2B1F;
-    outline-offset: 3px;
-}
-
-/* ---------- Transição entre páginas ---------- */
-
-@keyframes pagina-entrar {
-    from {
-        opacity: 0;
+    /* NOVO: banner em coluna */
+    .banner {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 30px;
+        padding: 40px 20px;
     }
 
-    to {
-        opacity: 1;
+    .coluna-imagem {
+        max-width: none;
     }
-}
 
-body.pagina-entrando {
-    animation: pagina-entrar 0.45s ease;
-}
-
-body.saindo {
-    opacity: 0;
-    transition: opacity 0.25s ease;
-}
-
-/* ---------- Cards sobem levemente ao passar o mouse ---------- */
-
-.card,
-.categorias,
-.info,
-.card-info,
-.comentarios,
-.item-galeria,
-.foto-galeria {
-    transition: transform 0.2s ease;
-}
-
-.card:hover,
-.categorias:hover,
-.info:hover,
-.card-info:hover,
-.comentarios:hover,
-.item-galeria:hover,
-.foto-galeria:hover {
-    transform: translateY(-4px);
-}
-
-/* ---------- Aparecer ao rolar (precisa ficar depois dos cards) ---------- */
-
-.reveal {
-    opacity: 0;
-    transform: translateY(24px);
-    transition: opacity 0.6s ease, transform 0.6s ease;
-}
-
-.reveal.visivel {
-    opacity: 1;
-    transform: translateY(0);
-}
-/* =========================
-   ORÇAMENTO - PÁGINA
-   (tudo escopado: não afeta as outras páginas)
-========================= */
-
-/* ---------- "Como funciona": são 3 passos, não 4 ---------- */
-
-#como-funciona .grade {
-    grid-template-columns: repeat(3, 1fr);
+    .delivery .grade {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
 @media (max-width: 800px) {
+
+    /* Contato */
+    .contato-grade {
+        grid-template-columns: 1fr;
+        gap: 24px;
+        padding: 40px 20px 80px;
+    }
+
+    .formulario-contato,
+    .informacoes-contato {
+        padding: 24px;
+    }
+
+    .formulario-contato h2,
+    .informacoes-contato h2 {
+        font-size: 24px;
+        margin-bottom: 24px;
+    }
+
+    /* Orçamento */
     #como-funciona .grade {
         grid-template-columns: 1fr;
         gap: 20px;
         padding-bottom: 20px;
     }
-}
-
-/* ---------- Cartão do formulário ---------- */
-
-#formulario .cartao-fidelidade {
-    padding: 35px 40px 25px;
-}
-
-#formulario .cartao-fidelidade .topo {
-    margin-bottom: 25px;
-    flex-wrap: wrap;
-    gap: 8px;
-}
-
-.obrigatorio-legenda {
-    color: #6b5c4f;
-    font-size: 12px;
-}
-
-.obrigatorio-legenda span,
-.formulario-orcamento .obrigatorio {
-    color: #B3402A;
-    font-weight: bold;
-}
-
-/* ---------- Grupos (fieldset) ---------- */
-
-.formulario-orcamento {
-    text-align: left;
-}
-
-.formulario-orcamento fieldset {
-    border: none;
-    margin: 0;
-    padding: 0;
-    min-width: 0;
-}
-
-.formulario-orcamento .grupo {
-    padding: 0 0 25px;
-    margin-bottom: 25px;
-    border-bottom: 1px dashed #D8C9A8;
-}
-
-.formulario-orcamento .grupo legend {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 0;
-    margin-bottom: 18px;
-    color: #3D2B1F;
-    font-family: Georgia, "Times New Roman", Times, serif;
-    font-size: 18px;
-}
-
-.formulario-orcamento .numero {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 26px;
-    height: 26px;
-    border-radius: 50%;
-    background-color: #C9A227;
-    color: #0D0D0D;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 13px;
-    font-weight: bold;
-}
-
-/* ---------- Campos ---------- */
-
-.formulario-orcamento .linha {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-    margin-bottom: 20px;
-}
-
-.formulario-orcamento .linha:last-child {
-    margin-bottom: 0;
-}
-
-.formulario-orcamento .campo {
-    min-width: 0;
-}
-
-.formulario-orcamento .campo > label,
-.formulario-orcamento .opcoes-grupo legend {
-    display: block;
-    padding: 0;
-    margin: 0;
-    color: #3D2B1F;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 14px;
-}
-
-.formulario-orcamento input[type="text"],
-.formulario-orcamento input[type="tel"],
-.formulario-orcamento input[type="date"],
-.formulario-orcamento select,
-.formulario-orcamento textarea {
-    display: block;
-    width: 100%;
-    margin-top: 8px;
-    padding: 12px 14px;
-    background-color: #FFFAF0;
-    border: 1px solid #D8C9A8;
-    border-radius: 12px;
-    color: #3D2B1F;
-    font-family: inherit;
-    font-size: 14px;
-    transition: border-color 0.2s ease, box-shadow 0.2s ease;
-}
-
-.formulario-orcamento textarea {
-    resize: vertical;
-    min-height: 120px;
-}
-
-.formulario-orcamento input::placeholder,
-.formulario-orcamento textarea::placeholder {
-    color: #6B5C4F;
-    opacity: 0.7;
-}
-
-.formulario-orcamento input:focus,
-.formulario-orcamento select:focus,
-.formulario-orcamento textarea:focus {
-    outline: none;
-    border-color: #C9A227;
-    box-shadow: 0 0 0 3px rgba(201, 162, 39, 0.25);
-}
-
-/* Só mostra o erro depois que a pessoa mexeu no campo */
-.formulario-orcamento input:user-invalid,
-.formulario-orcamento select:user-invalid,
-.formulario-orcamento textarea:user-invalid {
-    border-color: #B3402A;
-    box-shadow: 0 0 0 3px rgba(179, 64, 42, 0.15);
-}
-
-.formulario-orcamento .dica,
-.formulario-orcamento .contador {
-    display: block;
-    margin-top: 6px;
-    color: #6b5c4f;
-    font-size: 12px;
-    line-height: 1.4;
-}
-
-.formulario-orcamento .contador {
-    text-align: right;
-}
-
-.formulario-orcamento .contador.limite {
-    color: #B3402A;
-    font-weight: bold;
-}
-
-/* ---------- Retirada / Delivery (botões de escolha) ---------- */
-
-.formulario-orcamento .opcoes {
-    display: flex;
-    gap: 10px;
-    margin-top: 8px;
-}
-
-.formulario-orcamento .opcao {
-    flex: 1;
-    position: relative;
-    cursor: pointer;
-}
-
-.formulario-orcamento .opcao input {
-    position: absolute;
-    opacity: 0;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    margin: 0;
-    cursor: pointer;
-}
-
-.formulario-orcamento .opcao span {
-    display: block;
-    padding: 12px 14px;
-    text-align: center;
-    background-color: #FFFAF0;
-    border: 1px solid #D8C9A8;
-    border-radius: 12px;
-    color: #3D2B1F;
-    font-size: 14px;
-    transition: background-color 0.2s ease, border-color 0.2s ease;
-}
-
-.formulario-orcamento .opcao:hover span {
-    border-color: #C9A227;
-}
-
-.formulario-orcamento .opcao input:checked + span {
-    background-color: #f0e0b8;
-    border-color: #C9A227;
-    font-weight: bold;
-}
-
-.formulario-orcamento .opcao input:focus-visible + span {
-    outline: 3px solid #3D2B1F;
-    outline-offset: 2px;
-}
-
-/* ---------- Botões ---------- */
-
-.formulario-orcamento .acoes-formulario {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
-    margin-top: 5px;
-}
-
-.formulario-orcamento .botao-principal,
-.formulario-orcamento .botao-whatsapp-form {
-    border: none;
-    border-radius: 30px;
-    padding: 14px 28px;
-    font-family: inherit;
-    font-size: 14px;
-    font-weight: bold;
-    letter-spacing: 0.5px;
-    cursor: pointer;
-    transition: background-color 0.2s ease, transform 0.2s ease;
-}
-
-.formulario-orcamento .botao-principal:hover {
-    background-color: #B08E1F;
-}
-
-.formulario-orcamento .botao-whatsapp-form {
-    background-color: transparent;
-    color: #3D2B1F;
-    border: 1.5px solid #C9A227;
-}
-
-.formulario-orcamento .botao-whatsapp-form:hover {
-    background-color: #f0e0b8;
-}
-
-.formulario-orcamento .botao-principal:focus-visible,
-.formulario-orcamento .botao-whatsapp-form:focus-visible {
-    outline: 3px solid #3D2B1F;
-    outline-offset: 3px;
-}
-
-/* ---------- Mensagem de retorno ---------- */
-
-.formulario-orcamento .status-formulario {
-    margin: 18px 0 0;
-    padding: 12px 16px;
-    background-color: #f0e0b8;
-    border-left: 4px solid #C9A227;
-    border-radius: 8px;
-    color: #3D2B1F;
-    font-size: 13px;
-    line-height: 1.5;
-}
-
-.formulario-orcamento .status-formulario[hidden] {
-    display: none;
-}
-
-#formulario .cartao-fidelidade > .legenda {
-    margin-top: 22px;
-    text-align: center;
-}
-
-/* ---------- Celular ---------- */
-
-@media (max-width: 800px) {
-    #formulario.fidelidade {
-        padding: 50px 20px 80px;
-    }
 
     #formulario .cartao-fidelidade {
         padding: 25px 20px 20px;
     }
+
+    /* Endereço */
+    .pagina-endereco .banner {
+        padding: 35px 20px;
+    }
+
+    .pagina-endereco .texto h1 {
+        font-size: 32px;
+    }
+
+    .endereco-grade {
+        grid-template-columns: 1fr;
+        gap: 24px;
+        padding: 30px 20px 70px;
+    }
+
+    .endereco-grade .mapa iframe {
+        height: 350px;
+    }
+
+    .endereco-grade .grade {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 14px;
+    }
+
+    .endereco-grade .categorias {
+        padding: 20px;
+    }
+
+    /* NOVO: demais páginas */
+    .cardapio {
+        padding: 50px 20px;
+    }
+
+    .cardapio .grade {
+        flex-wrap: wrap;
+    }
+
+    .cardapio .categorias {
+        flex: 1 1 calc(50% - 10px);
+    }
+
+    .galeria {
+        flex-direction: column;
+    }
+
+    .novidade {
+        padding: 50px 20px;
+    }
+
+    .novidade-conteudo,
+    .novidade-imagem {
+        flex-direction: column;
+    }
+
+    .novidade-imagem {
+        align-items: center;
+    }
+
+    .novidade-conteudo video {
+        width: 100%;
+        height: auto;
+    }
+
+    .novidade-texto {
+        max-width: none;
+    }
+
+    .card-imagem {
+        width: 100%;
+        max-width: 400px;
+        height: 300px;
+    }
+
+    .encomenda {
+        flex-direction: column;
+        align-items: flex-start;
+        margin: 30px 20px 60px;
+    }
+
+    .encomenda-texto {
+        margin: 20px 20px 0;
+    }
+
+    .botaoWhatsapp {
+        margin: 10px 20px 20px;
+    }
+
+    .sobre {
+        flex-direction: column;
+        gap: 30px;
+        margin: 40px auto;
+        padding: 0 20px;
+    }
+
+    .grade-info {
+        flex-direction: column;
+        gap: 20px;
+        padding: 40px 20px 80px;
+    }
+
+    .entrevista-audio {
+        padding: 40px 20px;
+    }
+
+    .cardapio-tabela {
+        grid-template-columns: 1fr;
+        padding-bottom: 80px;
+    }
+
+    .fidelidade {
+        padding: 50px 20px 80px;
+    }
+
+    .comentarios-google {
+        padding: 50px 20px 80px;
+    }
+
+    .grade-google {
+        flex-direction: column;
+    }
+
+    .comentarios-pagina {
+        grid-template-columns: 1fr;
+    }
+
+    .galeria-pagina {
+        padding: 50px 20px 80px;
+    }
+
+    .grade-galeria {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .valores li,
+    .valores li.cabecalho {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .termo {
+        padding: 40px 20px 80px;
+    }
+
+    footer {
+        padding: 40px 20px;
+    }
+
+    .informações {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
 }
 
 @media (max-width: 600px) {
+
+    /* Orçamento */
     .formulario-orcamento .linha {
         grid-template-columns: 1fr;
-        gap: 20px;
     }
 
     .formulario-orcamento .acoes-formulario {
@@ -2314,5 +2082,63 @@ body.saindo {
     .formulario-orcamento .botao-principal,
     .formulario-orcamento .botao-whatsapp-form {
         width: 100%;
+    }
+
+    /* NOVO */
+    .texto h1 {
+        font-size: 32px;
+    }
+
+    .info-loja {
+        flex-wrap: wrap;
+        gap: 10px 25px;
+    }
+
+    .delivery .grade {
+        grid-template-columns: 1fr;
+    }
+
+    .fidelidade .grade {
+        gap: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+
+    .pagina-endereco .texto h1 {
+        font-size: 28px;
+    }
+
+    .endereco-grade {
+        padding: 25px 14px 50px;
+    }
+
+    .endereco-grade .mapa iframe {
+        height: 300px;
+    }
+
+    .endereco-grade .grade {
+        grid-template-columns: 1fr;
+    }
+
+    /* NOVO */
+    .cardapio .categorias {
+        flex-basis: 100%;
+    }
+
+    .grade-galeria {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 400px) {
+
+    .contato-grade {
+        padding: 30px 14px 60px;
+    }
+
+    .formulario-contato,
+    .informacoes-contato {
+        padding: 18px;
     }
 }
