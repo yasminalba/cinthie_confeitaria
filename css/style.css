@@ -1080,69 +1080,124 @@ body.lightbox-aberto {
     overflow: hidden;
 }
 
+
 /* =========================
    12. FEEDBACKS
 ========================= */
 
 .comentarios-google {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 25px;
     max-width: var(--largura);
     margin: 0 auto;
     padding: 80px var(--margem-lateral) 120px;
-}
-
-.grade-google {
-    display: flex;
-    gap: 20px;
-}
-
-.comentarios-pagina {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 20px;
     align-items: stretch;
 }
 
-.comentarios-pagina h2 {
+/* Título da seção */
+
+.comentarios-google > h2 {
     grid-column: 1 / -1;
     font-size: 28px;
-    margin: 0 0 5px;
+    margin: 0 0 10px;
 }
 
-.comentarios {
+/* Cartões de comentários */
+
+.comentarios-google > .comentarios {
+    display: flex;
+    flex-direction: column;
     min-width: 0;
     min-height: 300px;
-    padding: 30px;
+    padding: 25px;
+    margin: 0;
     border-radius: 12px;
+    background-color: var(--creme);
+    box-shadow: var(--sombra);
 }
+
+/* Nome */
 
 .comentarios h3 {
-    font-size: 15px;
     color: var(--marrom);
-    line-height: 1.5;
+    font-size: 15px;
+    margin: 0 0 8px;
 }
 
-.comentarios p {
-    color: var(--marrom);
-    font-size: 13px;
-    line-height: 1.5;
-    margin: 0;
-}
+/* Informações do avaliador */
 
 .comentarios .descricao {
     color: var(--marrom-medio);
     font-size: 12px;
-    margin: 0 0 5px;
+    margin: 0 0 10px;
 }
+
+/* Estrelas */
 
 .comentarios .estrela {
     display: block;
+    color: var(--dourado);
     margin-bottom: 12px;
 }
 
+/* Texto da avaliação */
+
+.comentarios > p:not(.descricao) {
+    color: var(--marrom);
+    font-size: 13px;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* Botão de avaliar */
+
 .site-comentarios {
     grid-column: 1 / -1;
-    margin-top: 10px;
+    margin-top: 15px;
 }
+
+/* Tablet */
+
+@media (max-width: 800px) {
+    .comentarios-google {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 18px;
+        padding: 50px 20px 80px;
+    }
+
+    .comentarios-google > .comentarios {
+        min-height: 0;
+    }
+}
+
+/* Celular */
+
+@media (max-width: 480px) {
+    .comentarios-google {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+        padding: 35px 12px 60px;
+    }
+
+    .comentarios-google > .comentarios {
+        padding: 14px;
+    }
+
+    .comentarios h3 {
+        font-size: 13px;
+    }
+
+    .comentarios .descricao {
+        font-size: 11px;
+    }
+
+    .comentarios > p:not(.descricao) {
+        font-size: 12px;
+        line-height: 1.5;
+    }
+}
+
 
 /* =========================
    13. FORMULÁRIOS
