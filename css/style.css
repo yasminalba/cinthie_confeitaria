@@ -2398,3 +2398,50 @@ body.saindo {
         padding: 22px;
     }
 }
+/* CORREÇÃO DA LARGURA DAS AVALIAÇÕES */
+
+.comentarios-google {
+    width: 100%;
+    max-width: none;
+    padding: 80px 5%;
+    margin: 0;
+}
+
+.grade-google {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    width: 100%;
+    max-width: 1500px;
+    margin: 40px auto 0;
+}
+
+.comentarios {
+    width: 100%;
+    min-width: 0;
+    padding: 35px;
+    box-sizing: border-box;
+}
+
+/* TABLET */
+@media (max-width: 900px) {
+    .grade-google {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* CELULAR */
+@media (max-width: 600px) {
+    .comentarios-google {
+        padding: 50px 20px;
+    }
+
+    .grade-google {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .comentarios {
+        padding: 25px;
+    }
+}
