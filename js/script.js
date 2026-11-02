@@ -1,22 +1,10 @@
-/* =====================================================
-   Cinthiê Confeitaria - JavaScript do site
-   Cada função só age se encontrar seus elementos na
-   página, então o mesmo arquivo serve para todas.
-===================================================== */
 
 (function () {
   'use strict';
 
-  /* -----------------------------------------------
-     APOIO: preferência de movimento reduzido,
-     rolagem otimizada e verificação de links
-  ----------------------------------------------- */
-
-  // Quem prefere menos animação no sistema não vê os efeitos de movimento
   var REDUZIR = window.matchMedia &&
     window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  // Uma única escuta de rolagem, repartida entre os efeitos
   var funcoesRolagem = [];
   var aguardandoQuadro = false;
 
@@ -39,7 +27,6 @@
   window.addEventListener('scroll', pedirQuadro, { passive: true });
   window.addEventListener('resize', pedirQuadro);
 
-  // Devolve a URL se o link leva a outra página do próprio site
   function urlInterna(link) {
     if (!link || !link.href) return null;
     if (link.target && link.target !== '_self') return null;
@@ -63,13 +50,6 @@
       !evento.metaKey && !evento.ctrlKey && !evento.shiftKey && !evento.altKey;
   }
 
-  /* -----------------------------------------------
-     1. STATUS DA LOJA (index.html)
-     Mostra "Aberto agora" ou "Fechado" conforme o
-     horário real de São Paulo. Atualiza a cada minuto.
-  ----------------------------------------------- */
-
-  // Horários de funcionamento em horas [abre, fecha]; null = fechado
   var HORARIOS = {
     0: null,        // domingo
     1: [9, 19],     // segunda
@@ -148,22 +128,11 @@
     setInterval(atualizar, 60000);
   }
 
-  /* -----------------------------------------------
-     2. LINK ATIVO NO MENU (todas as páginas)
-     Marca a página atual para leitores de tela.
-  ----------------------------------------------- */
-
   function iniciarLinkAtivo() {
     document.querySelectorAll('.menu a.ativo').forEach(function (link) {
       link.setAttribute('aria-current', 'page');
     });
   }
-
-  /* -----------------------------------------------
-     3. MENU RESPONSIVO (todas as páginas)
-     Cria o botão de menu para telas pequenas.
-     Fecha com Esc, ao escolher um link ou ao clicar fora.
-  ----------------------------------------------- */
 
   function iniciarMenu() {
     var nav = document.querySelector('header nav');
@@ -211,12 +180,6 @@
     });
   }
 
-  /* -----------------------------------------------
-     4. BARRA DE NAVEGAÇÃO FLUTUANTE (todas as páginas)
-     Ao rolar para cima, o menu reaparece no topo da
-     tela. Ao rolar para baixo, ele se esconde.
-  ----------------------------------------------- */
-
   function iniciarBarraFlutuante() {
     var nav = document.querySelector('header nav');
     var menu = nav ? nav.querySelector('.menu') : null;
@@ -259,17 +222,11 @@
       var y = window.scrollY;
       if (Math.abs(y - ultimoY) < 6) return;
 
-      // Aparece só quando a pessoa rola para cima, longe do topo
       barra.classList.toggle('visivel', y > 150 && y < ultimoY);
       ultimoY = y;
     });
   }
 
-  /* -----------------------------------------------
-     5. BARRA DE PROGRESSO DE LEITURA (todas as páginas)
-     Linha dourada no topo que mostra quanto da página
-     já foi percorrido.
-  ----------------------------------------------- */
 
   function iniciarProgresso() {
     var barra = document.createElement('div');
@@ -283,10 +240,6 @@
       barra.style.width = porcentagem + '%';
     });
   }
-
-  /* -----------------------------------------------
-     6. BOTÃO VOLTAR AO TOPO (todas as páginas)
-  ----------------------------------------------- */
 
   function iniciarVoltarTopo() {
     var botao = document.createElement('button');
@@ -304,12 +257,6 @@
       botao.classList.toggle('visivel', window.scrollY > 500);
     });
   }
-
-  /* -----------------------------------------------
-     7. ROLAGEM SUAVE PARA ÂNCORAS (todas as páginas)
-     Links como #formulario deslizam até a seção,
-     deixando espaço para a barra flutuante.
-  ----------------------------------------------- */
 
   function iniciarRolagemSuave() {
     document.addEventListener('click', function (evento) {
@@ -338,12 +285,6 @@
     });
   }
 
-  /* -----------------------------------------------
-     8. TRANSIÇÃO ENTRE PÁGINAS (todas as páginas)
-     A página entra com fade e sai com fade antes de
-     abrir o próximo link do site.
-  ----------------------------------------------- */
-
   function iniciarTransicaoPaginas() {
     if (REDUZIR) return;
 
@@ -355,7 +296,6 @@
       var url = urlInterna(evento.target.closest('a'));
       if (!url) return;
 
-      // Mesma página (incluindo âncoras): deixa o navegador agir
       if (url.pathname === window.location.pathname && url.search === window.location.search) return;
 
       evento.preventDefault();
@@ -363,17 +303,11 @@
       setTimeout(function () { window.location.href = url.href; }, 250);
     });
 
-    // Ao voltar pelo botão do navegador, a página não fica apagada
     window.addEventListener('pageshow', function (evento) {
       if (evento.persisted) document.body.classList.remove('saindo');
     });
   }
 
-  /* -----------------------------------------------
-     9. CARREGAMENTO ANTECIPADO (todas as páginas)
-     Ao passar o mouse (ou tocar) num link, a página
-     de destino já começa a carregar.
-  ----------------------------------------------- */
 
   function iniciarPrefetch() {
     var jaPedidos = {};
@@ -397,12 +331,6 @@
     document.addEventListener('touchstart', antecipar, { passive: true });
   }
 
-  /* -----------------------------------------------
-     10. APARECER AO ROLAR (todas as páginas)
-     Cards e blocos surgem com fade e subida suave
-     quando entram na tela, em sequência.
-  ----------------------------------------------- */
-
   function iniciarRevelar() {
     if (REDUZIR || !('IntersectionObserver' in window)) return;
 
@@ -422,7 +350,6 @@
         observador.unobserve(elemento);
         elemento.classList.add('visivel');
 
-        // Depois da animação, devolve o elemento ao estado normal
         setTimeout(function () {
           elemento.classList.remove('reveal', 'visivel');
           elemento.style.transitionDelay = '';
@@ -440,12 +367,6 @@
       observador.observe(elemento);
     });
   }
-
-  /* -----------------------------------------------
-     11. CONTADORES ANIMADOS (quem-somos.html)
-     Os números 5,0 / 18 / 100% sobem até o valor final
-     quando aparecem na tela.
-  ----------------------------------------------- */
 
   function iniciarContadores() {
     var alvos = document.querySelectorAll('.cards h2');
@@ -501,11 +422,6 @@
       observador.observe(elemento);
     });
   }
-
-  /* -----------------------------------------------
-     12. BUSCA NO CARDÁPIO (cardapio.html)
-     Campo de busca que filtra itens e categorias.
-  ----------------------------------------------- */
 
   function normalizar(texto) {
     return texto
@@ -570,11 +486,6 @@
     });
   }
 
-  /* -----------------------------------------------
-     13. CARTÃO DE FIDELIDADE (fidelidade.html)
-     Clique (ou Enter/Espaço) para carimbar um selo.
-  ----------------------------------------------- */
-
   function iniciarFidelidade() {
     var contagem = document.querySelector('.contagem');
     var selos = Array.prototype.slice.call(document.querySelectorAll('.selo, .selo-ok'));
@@ -619,11 +530,6 @@
 
     atualizar();
   }
-
-  /* -----------------------------------------------
-     14. GALERIA COM AMPLIAÇÃO (galeria.html)
-     Clique na foto para ver em tamanho maior.
-  ----------------------------------------------- */
 
   function iniciarLightbox() {
     var imagens = document.querySelectorAll('.foto-galeria img');
@@ -691,12 +597,6 @@
     });
   }
 
-  /* -----------------------------------------------
-     15. FORMULÁRIOS (contato.html e orcamento.html)
-     - Máscara de telefone: (11) 93935-9449
-     - Data do orçamento: não aceita datas passadas
-  ----------------------------------------------- */
-
   function formatarTelefone(valor) {
     var d = valor.replace(/\D/g, '').slice(0, 11);
 
@@ -732,13 +632,6 @@
       data.min = ano + '-' + mes + '-' + dia;
     }
   }
-    /* -----------------------------------------------
-     16. FORMULÁRIO DE ORÇAMENTO (orcamento.html)
-     - Contador de caracteres das observações
-     - Botão "Enviar pelo Whatsapp": monta a mensagem
-       com os dados preenchidos e abre a conversa
-     - Mensagem de confirmação ao enviar por e-mail
-  ----------------------------------------------- */
 
   var WHATSAPP_LOJA = '5511939359449';
 
@@ -762,7 +655,6 @@
       status.hidden = false;
     }
 
-    // Contador de caracteres
     if (mensagem && contador) {
       var limite = mensagem.maxLength > 0 ? mensagem.maxLength : 500;
 
@@ -775,7 +667,6 @@
       atualizarContador();
     }
 
-    // Enviar pelo Whatsapp com os dados do formulário
     if (botaoWhats) {
       botaoWhats.addEventListener('click', function () {
         if (!form.reportValidity()) return;
@@ -799,15 +690,10 @@
       });
     }
 
-    // Aviso ao enviar por e-mail (o envio em si continua igual: mailto)
     form.addEventListener('submit', function () {
       mostrarStatus('Se o seu aplicativo de e-mail abriu, é só confirmar o envio. Retornamos pelo Whatsapp em até 24h.');
     });
   }
-
-  /* -----------------------------------------------
-     INICIALIZAÇÃO
-  ----------------------------------------------- */
 
   iniciarStatusLoja();
   iniciarLinkAtivo();
@@ -826,6 +712,5 @@
   iniciarFormularios();
   iniciarOrcamento();
 
-  // Primeira leitura da posição de rolagem
   processarRolagem();
 })();

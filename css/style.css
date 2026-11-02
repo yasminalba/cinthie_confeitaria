@@ -1,33 +1,3 @@
-/* =====================================================
-   Cinthiê Confeitaria — style.css
-
-   ÍNDICE
-   1. Variáveis (paleta, tipografia, sombras)
-   2. Base
-   3. Cabeçalho e navegação
-   4. Banner
-   5. Botões
-   6. Componentes compartilhados (cartões, títulos de seção)
-   7. Páginas
-      7.1  Início
-      7.2  Quem somos
-      7.3  Cardápio
-      7.4  Delivery e "Como funciona" (Orçamento)
-      7.5  Fidelidade
-      7.6  Galeria
-      7.7  Feedbacks
-      7.8  Formulários (Contato e Orçamento)
-      7.9  Endereço
-      7.10 Termos e Política
-   8. Rodapé
-   9. Efeitos e elementos criados pelo JavaScript
-   10. Responsivo
-===================================================== */
-
-
-/* =========================
-   1. VARIÁVEIS
-========================= */
 
 :root {
     /* Paleta */
@@ -56,11 +26,11 @@
 
     /* Layout */
     --largura: 1200px;
+    --margem-lateral: 40px;
 }
 
-
 /* =========================
-   2. BASE
+   1. BASE
 ========================= */
 
 * {
@@ -86,9 +56,13 @@ h2 {
     padding: 0;
 }
 
+a:focus-visible {
+    outline: 3px solid var(--dourado);
+    outline-offset: 3px;
+}
 
 /* =========================
-   3. CABEÇALHO E NAVEGAÇÃO
+   2. CABEÇALHO E NAVEGAÇÃO
 ========================= */
 
 header {
@@ -103,7 +77,7 @@ header nav {
     justify-content: space-between;
     max-width: var(--largura);
     margin: 0 auto;
-    padding-bottom: 10px;
+    padding: 0 var(--margem-lateral) 10px;
 }
 
 .logo img {
@@ -116,10 +90,14 @@ header nav {
     gap: 25px;
 }
 
-.menu a {
+.menu a,
+.flutuante-links a {
     color: var(--creme);
     text-decoration: none;
     font-size: 13px;
+}
+
+.menu a {
     padding-bottom: 4px;
     background-image: linear-gradient(var(--dourado), var(--dourado));
     background-repeat: no-repeat;
@@ -129,13 +107,19 @@ header nav {
 }
 
 .menu a:hover,
-.menu a.ativo {
+.menu a.ativo,
+.flutuante-links a:hover,
+.flutuante-links a.ativo {
     color: var(--dourado);
+}
+
+.menu a:hover,
+.menu a.ativo {
     background-size: 100% 2px;
 }
 
-/* Botão do menu em telas pequenas (criado pelo JS) */
-.menu-toggle {
+.menu-toggle,
+.menu-mobile {
     display: none;
     background: none;
     border: 1px solid var(--dourado);
@@ -145,6 +129,13 @@ header nav {
     line-height: 1;
     padding: 8px 12px;
     cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.menu-toggle:hover,
+.menu-mobile:hover {
+    background-color: var(--dourado);
+    color: var(--preto-suave);
 }
 
 .linha-divisoria {
@@ -152,9 +143,8 @@ header nav {
     width: 100%;
 }
 
-
 /* =========================
-   4. BANNER
+   3. BANNER
 ========================= */
 
 .banner {
@@ -164,7 +154,7 @@ header nav {
     gap: 100px;
     max-width: var(--largura);
     margin: 0 auto;
-    padding: 60px 0;
+    padding: 60px var(--margem-lateral);
 }
 
 .coluna-texto {
@@ -215,21 +205,23 @@ header nav {
     margin-top: 20px;
 }
 
-
 /* =========================
-   5. BOTÕES
+   4. BOTÕES
 ========================= */
 
-/* Base compartilhada pelos botões de link */
 .botao-principal,
 .botao-segundario,
 .avaliar,
 .botao-endereco {
     display: inline-block;
-    padding: 12px 20px;
     text-decoration: none;
-    font-size: 13px;
     border-radius: 8px;
+}
+
+.botao-principal,
+.botao-segundario {
+    padding: 12px 20px;
+    font-size: 13px;
 }
 
 .botao-principal {
@@ -242,7 +234,6 @@ header nav {
     color: var(--dourado-claro);
 }
 
-/* Botões de destaque dentro das páginas */
 .avaliar,
 .botao-endereco {
     padding: 12px 24px;
@@ -262,7 +253,6 @@ header nav {
     margin-top: 20px;
 }
 
-/* "Pedir agora" no menu */
 .botao-whatsapp {
     display: inline-block;
     width: 100px;
@@ -275,7 +265,6 @@ header nav {
     border-radius: 8px;
 }
 
-/* "Falar no WhatsApp" da faixa de encomenda */
 .botaoWhatsapp {
     color: var(--dourado);
     background-color: var(--preto);
@@ -286,7 +275,8 @@ header nav {
     border-radius: 15px;
 }
 
-/* Botões dos formulários (Contato e Orçamento) */
+/* Botões dos formulários */
+
 .formulario-contato button,
 .formulario-orcamento .botao-principal,
 .formulario-orcamento .botao-whatsapp-form {
@@ -322,18 +312,16 @@ header nav {
     background-color: var(--dourado-fundo);
 }
 
+.formulario-contato button:focus-visible,
 .formulario-orcamento .botao-principal:focus-visible,
 .formulario-orcamento .botao-whatsapp-form:focus-visible {
     outline: 3px solid var(--marrom);
     outline-offset: 3px;
 }
 
-
 /* =========================
-   6. COMPONENTES COMPARTILHADOS
+   5. COMPONENTES COMPARTILHADOS
 ========================= */
-
-/* ---------- Cartões: fundo creme + sombra ---------- */
 
 .categorias,
 .cards,
@@ -355,8 +343,6 @@ header nav {
     background-color: var(--creme);
     box-shadow: var(--sombra-suave);
 }
-
-/* ---------- Ícone, título e texto dos cartões de categoria/informação ---------- */
 
 .categorias .icone,
 .info .icone {
@@ -384,8 +370,6 @@ header nav {
     margin: 0;
 }
 
-/* ---------- Título de seção: rótulo + título ---------- */
-
 .cardapio .subtitulo,
 .novidade > p,
 .comentarios-google .subtitulo,
@@ -406,18 +390,23 @@ header nav {
     margin-bottom: 40px;
 }
 
+.valores-delivery h2,
+.fidelidade h2,
+.formulario-contato h2,
+.informacoes-contato h2 {
+    font-size: 28px;
+    margin: 0 0 30px;
+}
+
 .legenda {
     color: var(--marrom-medio);
     font-size: 12px;
     margin: 0;
 }
 
-
 /* =========================
-   7. PÁGINAS
+   6. INÍCIO
 ========================= */
-
-/* ---------- 7.1 INÍCIO ---------- */
 
 .info-loja {
     display: flex;
@@ -480,7 +469,7 @@ header nav {
 .cardapio {
     max-width: var(--largura);
     margin: 0 auto;
-    padding: 80px 40px;
+    padding: 80px var(--margem-lateral);
 }
 
 .grade {
@@ -496,7 +485,7 @@ header nav {
     border-radius: 12px;
 }
 
-/* Conheça a Cinthiê */
+/* Galeria inicial */
 
 .imagens {
     max-width: var(--largura);
@@ -537,7 +526,7 @@ header nav {
 .novidade {
     max-width: var(--largura);
     margin: 0 auto;
-    padding: 80px 40px;
+    padding: 80px var(--margem-lateral);
 }
 
 .novidade-conteudo {
@@ -590,7 +579,7 @@ header nav {
     box-shadow: var(--sombra);
 }
 
-/* Faixa de encomenda */
+/* Encomenda */
 
 .encomenda {
     display: flex;
@@ -622,8 +611,9 @@ header nav {
     margin: 5px 0 0;
 }
 
-
-/* ---------- 7.2 QUEM SOMOS ---------- */
+/* =========================
+   7. QUEM SOMOS
+========================= */
 
 .sobre {
     display: flex;
@@ -631,7 +621,7 @@ header nav {
     gap: 60px;
     max-width: var(--largura);
     margin: 80px auto;
-    padding: 0 40px;
+    padding: 0 var(--margem-lateral);
 }
 
 .texto-sobre {
@@ -683,7 +673,7 @@ header nav {
 .entrevista-audio {
     max-width: 1100px;
     margin: 0 auto;
-    padding: 60px 40px;
+    padding: 60px var(--margem-lateral);
     text-align: center;
 }
 
@@ -730,26 +720,34 @@ header nav {
     line-height: 1.6;
 }
 
-
-/* ---------- 7.3 CARDÁPIO ---------- */
+/* =========================
+   8. CARDÁPIO
+========================= */
 
 .cardapio-tabela {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 30px;
     max-width: 1100px;
     margin: 60px auto;
     padding: 20px 20px 150px;
 }
 
 .cardapio-tabela h2 {
-    grid-column: 1 / -1;
     font-size: 30px;
     font-weight: bold;
-    margin: 0 0 10px;
+    margin: 0 0 30px;
+    color: var(--marrom);
+}
+
+.conteudo-cardapio {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 30px;
+    width: 100%;
+    align-items: stretch;
 }
 
 .card {
+    width: 100%;
+    min-width: 0;
     padding: 35px 40px;
     border-radius: 20px;
 }
@@ -788,12 +786,14 @@ header nav {
     white-space: nowrap;
 }
 
-/* Busca (criada pelo JS) */
+/* Busca do cardápio */
 
 .busca-cardapio {
     grid-column: 1 / -1;
     display: flex;
     flex-direction: column;
+    width: 100%;
+    margin-bottom: 25px;
 }
 
 .busca-cardapio label {
@@ -811,8 +811,9 @@ header nav {
     display: none;
 }
 
-
-/* ---------- 7.4 DELIVERY E "COMO FUNCIONA" ---------- */
+/* =========================
+   9. DELIVERY E ORÇAMENTO
+========================= */
 
 .delivery {
     padding-top: 70px;
@@ -833,7 +834,6 @@ header nav {
     padding: 20px 20px 40px;
 }
 
-/* Orçamento: são 3 passos, não 4 */
 #como-funciona .grade {
     grid-template-columns: repeat(3, 1fr);
 }
@@ -847,14 +847,6 @@ header nav {
     max-width: 1100px;
     margin: 20px auto 60px;
     padding: 20px 20px 90px;
-}
-
-.valores-delivery h2,
-.fidelidade h2,
-.formulario-contato h2,
-.informacoes-contato h2 {
-    font-size: 28px;
-    margin: 0 0 30px;
 }
 
 .valores-delivery > p {
@@ -906,13 +898,14 @@ header nav {
     color: var(--marrom-medio);
 }
 
-
-/* ---------- 7.5 FIDELIDADE ---------- */
+/* =========================
+   10. FIDELIDADE
+========================= */
 
 .fidelidade {
     max-width: var(--largura);
     margin: 0 auto;
-    padding: 80px 40px 120px;
+    padding: 80px var(--margem-lateral) 120px;
 }
 
 .cartao-fidelidade {
@@ -996,13 +989,14 @@ header nav {
     display: none;
 }
 
-
-/* ---------- 7.6 GALERIA ---------- */
+/* =========================
+   11. GALERIA
+========================= */
 
 .galeria-pagina {
     max-width: var(--largura);
     margin: 0 auto;
-    padding: 80px 40px 120px;
+    padding: 80px var(--margem-lateral) 120px;
 }
 
 .galeria-pagina h2 {
@@ -1038,14 +1032,9 @@ header nav {
     cursor: zoom-in;
 }
 
-/* Ampliação (criada pelo JS) */
-
 .lightbox {
     position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    inset: 0;
     z-index: 1000;
     display: flex;
     flex-direction: column;
@@ -1091,22 +1080,21 @@ body.lightbox-aberto {
     overflow: hidden;
 }
 
-
-/* ---------- 7.7 FEEDBACKS (também usado no Início) ---------- */
+/* =========================
+   12. FEEDBACKS
+========================= */
 
 .comentarios-google {
     max-width: var(--largura);
     margin: 0 auto;
-    padding: 80px 40px 120px;
+    padding: 80px var(--margem-lateral) 120px;
 }
 
-/* Início: 3 cartões lado a lado */
 .grade-google {
     display: flex;
     gap: 20px;
 }
 
-/* Página de feedbacks: grade de 3 colunas */
 .comentarios-pagina {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -1155,10 +1143,12 @@ body.lightbox-aberto {
     margin-top: 10px;
 }
 
-
-/* ---------- 7.8 FORMULÁRIOS ---------- */
+/* =========================
+   13. FORMULÁRIOS
+========================= */
 
 /* Rótulos */
+
 .formulario-contato label,
 .formulario-orcamento .campo > label,
 .formulario-orcamento .opcoes-grupo legend,
@@ -1172,6 +1162,7 @@ body.lightbox-aberto {
 }
 
 /* Campos */
+
 .formulario-contato input,
 .formulario-contato select,
 .formulario-contato textarea,
@@ -1216,7 +1207,9 @@ body.lightbox-aberto {
     box-shadow: 0 0 0 3px rgba(201, 162, 39, 0.25);
 }
 
-/* Só mostra o erro depois que a pessoa mexeu no campo */
+.formulario-contato input:user-invalid,
+.formulario-contato select:user-invalid,
+.formulario-contato textarea:user-invalid,
 .formulario-orcamento input:user-invalid,
 .formulario-orcamento select:user-invalid,
 .formulario-orcamento textarea:user-invalid {
@@ -1226,26 +1219,40 @@ body.lightbox-aberto {
 
 /* Contato */
 
-.contato-grade {
+.conteudo-contato {
     display: grid;
-    grid-template-columns: 1.4fr 1fr;
-    gap: 30px;
+    grid-template-columns: minmax(0, 500px) minmax(0, 380px);
+    justify-content: center;
     align-items: start;
+    gap: 30px;
     width: 100%;
-    max-width: var(--largura);
-    margin: 0 auto;
-    padding: 80px 40px 120px;
+    max-width: 1100px;
+    margin: 60px auto;
+    padding: 0 20px 100px;
 }
 
 .formulario-contato,
 .informacoes-contato {
+    width: 100%;
     min-width: 0;
     padding: 30px;
     border-radius: 20px;
+    background-color: var(--creme);
+    box-shadow: var(--sombra-suave);
+}
+
+.formulario-contato h2,
+.informacoes-contato h2 {
+    font-size: 26px;
+    margin: 0 0 25px;
 }
 
 .formulario-contato .campo {
     margin-bottom: 20px;
+}
+
+.formulario-contato .campo:last-child {
+    margin-bottom: 0;
 }
 
 .item-contato:not(:last-child) {
@@ -1261,7 +1268,7 @@ body.lightbox-aberto {
 
 .item-contato p {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     gap: 10px;
     margin: 0;
     color: var(--marrom);
@@ -1377,7 +1384,7 @@ body.lightbox-aberto {
     font-weight: bold;
 }
 
-/* Retirada / Delivery (botões de escolha) */
+/* Retirada e delivery */
 
 .formulario-orcamento .opcoes {
     display: flex;
@@ -1447,15 +1454,16 @@ body.lightbox-aberto {
     line-height: 1.5;
 }
 
-
-/* ---------- 7.9 ENDEREÇO ---------- */
+/* =========================
+   14. ENDEREÇO
+========================= */
 
 .pagina-endereco {
     background-color: var(--creme);
 }
 
 .pagina-endereco .banner {
-    padding: 50px 40px;
+    padding: 50px var(--margem-lateral);
     gap: 0;
 }
 
@@ -1536,13 +1544,14 @@ body.lightbox-aberto {
     overflow-wrap: anywhere;
 }
 
-
-/* ---------- 7.10 TERMOS E POLÍTICA ---------- */
+/* =========================
+   15. TERMOS E POLÍTICA
+========================= */
 
 .termo {
     max-width: 1000px;
     margin: 0 auto;
-    padding: 70px 40px 120px;
+    padding: 70px var(--margem-lateral) 120px;
 }
 
 .termo ol {
@@ -1563,15 +1572,15 @@ body.lightbox-aberto {
 }
 
 .termo .texto-termo {
+    max-width: 700px;
     color: var(--marrom-medio);
     font-size: 15px;
     line-height: 1.7;
     margin: 0;
 }
 
-
 /* =========================
-   8. RODAPÉ
+   16. RODAPÉ
 ========================= */
 
 footer {
@@ -1640,12 +1649,11 @@ footer {
     color: var(--dourado-claro);
 }
 
-
 /* =========================
-   9. EFEITOS E ELEMENTOS CRIADOS PELO JAVASCRIPT
+   17. EFEITOS E JAVASCRIPT
 ========================= */
 
-/* ---------- Barra de progresso de leitura ---------- */
+/* Barra de progresso */
 
 .barra-progresso {
     position: fixed;
@@ -1657,7 +1665,7 @@ footer {
     background-color: var(--dourado);
 }
 
-/* ---------- Barra de navegação flutuante ---------- */
+/* Menu flutuante */
 
 .barra-flutuante {
     position: fixed;
@@ -1669,7 +1677,7 @@ footer {
     align-items: center;
     justify-content: space-between;
     gap: 20px;
-    padding: 10px 40px;
+    padding: 10px var(--margem-lateral);
     background-color: var(--preto-suave);
     border-bottom: 1px solid rgba(232, 199, 102, 0.3);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
@@ -1694,22 +1702,11 @@ footer {
     gap: 22px;
 }
 
-.flutuante-links a {
-    color: var(--creme);
-    text-decoration: none;
-    font-size: 13px;
-}
-
-.flutuante-links a:hover,
-.flutuante-links a.ativo {
-    color: var(--dourado);
-}
-
 .barra-flutuante .botao-whatsapp {
     padding: 8px 14px;
 }
 
-/* ---------- Botão voltar ao topo ---------- */
+/* Voltar ao topo */
 
 .voltar-topo {
     position: fixed;
@@ -1747,7 +1744,7 @@ footer {
     outline-offset: 3px;
 }
 
-/* ---------- Transição entre páginas ---------- */
+/* Transição entre páginas */
 
 @keyframes pagina-entrar {
     from {
@@ -1768,7 +1765,7 @@ body.saindo {
     transition: opacity 0.25s ease;
 }
 
-/* ---------- Cartões sobem levemente ao passar o mouse ---------- */
+/* Animação dos cartões */
 
 .card,
 .categorias,
@@ -1790,27 +1787,49 @@ body.saindo {
     transform: translateY(-4px);
 }
 
-/* ---------- Aparecer ao rolar (precisa ficar DEPOIS dos cartões) ---------- */
+/* Aparecer ao rolar */
 
-.reveal {
+.reveal,
+.revelar {
     opacity: 0;
     transform: translateY(24px);
     transition: opacity 0.6s ease, transform 0.6s ease;
 }
 
-.reveal.visivel {
+.reveal.visivel,
+.revelar.visivel {
     opacity: 1;
     transform: translateY(0);
 }
 
+/* Acessibilidade */
+
+@media (prefers-reduced-motion: reduce) {
+    .reveal,
+    .revelar,
+    .voltar-topo,
+    .barra-flutuante,
+    .card,
+    .categorias,
+    .info,
+    .card-info,
+    .comentarios,
+    .item-galeria,
+    .foto-galeria {
+        transition: none;
+    }
+
+    body.pagina-entrando {
+        animation: none;
+    }
+}
 
 /* =========================
-   10. RESPONSIVO
+   18. RESPONSIVIDADE
 ========================= */
 
 @media (max-width: 1000px) {
 
-    /* NOVO: permite quebra de linha nos banners em telas médias/pequenas */
     .texto h1,
     .texto h1 + p {
         white-space: normal;
@@ -1819,7 +1838,8 @@ body.saindo {
 
 @media (max-width: 900px) {
 
-    /* Menu responsivo */
+    /* Menu */
+
     header nav {
         flex-wrap: wrap;
         gap: 15px;
@@ -1836,7 +1856,8 @@ body.saindo {
         order: 2;
     }
 
-    .menu-toggle {
+    .menu-toggle,
+    .menu-mobile {
         display: block;
         order: 3;
     }
@@ -1866,7 +1887,8 @@ body.saindo {
         display: none;
     }
 
-    /* NOVO: banner em coluna */
+    /* Banner */
+
     .banner {
         flex-direction: column;
         align-items: stretch;
@@ -1878,6 +1900,8 @@ body.saindo {
         max-width: none;
     }
 
+    /* Delivery */
+
     .delivery .grade {
         grid-template-columns: repeat(2, 1fr);
     }
@@ -1886,10 +1910,13 @@ body.saindo {
 @media (max-width: 800px) {
 
     /* Contato */
-    .contato-grade {
+
+    .conteudo-contato {
         grid-template-columns: 1fr;
+        max-width: 600px;
         gap: 24px;
-        padding: 40px 20px 80px;
+        margin: 40px auto;
+        padding: 0 20px 80px;
     }
 
     .formulario-contato,
@@ -1897,13 +1924,8 @@ body.saindo {
         padding: 24px;
     }
 
-    .formulario-contato h2,
-    .informacoes-contato h2 {
-        font-size: 24px;
-        margin-bottom: 24px;
-    }
-
     /* Orçamento */
+
     #como-funciona .grade {
         grid-template-columns: 1fr;
         gap: 20px;
@@ -1915,6 +1937,7 @@ body.saindo {
     }
 
     /* Endereço */
+
     .pagina-endereco .banner {
         padding: 35px 20px;
     }
@@ -1943,7 +1966,8 @@ body.saindo {
         padding: 20px;
     }
 
-    /* NOVO: demais páginas */
+    /* Categorias da página inicial */
+
     .cardapio {
         padding: 50px 20px;
     }
@@ -1956,9 +1980,28 @@ body.saindo {
         flex: 1 1 calc(50% - 10px);
     }
 
+    /* Cardápio */
+
+    .cardapio-tabela {
+        padding: 40px 20px 80px;
+    }
+
+    .conteudo-cardapio {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 20px;
+    }
+
+    .card {
+        padding: 25px 20px;
+    }
+
+    /* Galeria */
+
     .galeria {
         flex-direction: column;
     }
+
+    /* Novidades */
 
     .novidade {
         padding: 50px 20px;
@@ -1988,6 +2031,8 @@ body.saindo {
         height: 300px;
     }
 
+    /* Encomenda */
+
     .encomenda {
         flex-direction: column;
         align-items: flex-start;
@@ -2001,6 +2046,8 @@ body.saindo {
     .botaoWhatsapp {
         margin: 10px 20px 20px;
     }
+
+    /* Quem somos */
 
     .sobre {
         flex-direction: column;
@@ -2019,14 +2066,13 @@ body.saindo {
         padding: 40px 20px;
     }
 
-    .cardapio-tabela {
-        grid-template-columns: 1fr;
-        padding-bottom: 80px;
-    }
+    /* Fidelidade */
 
     .fidelidade {
         padding: 50px 20px 80px;
     }
+
+    /* Feedbacks */
 
     .comentarios-google {
         padding: 50px 20px 80px;
@@ -2040,6 +2086,8 @@ body.saindo {
         grid-template-columns: 1fr;
     }
 
+    /* Galeria */
+
     .galeria-pagina {
         padding: 50px 20px 80px;
     }
@@ -2048,15 +2096,21 @@ body.saindo {
         grid-template-columns: repeat(2, 1fr);
     }
 
+    /* Tabela de valores */
+
     .valores li,
     .valores li.cabecalho {
         padding-left: 20px;
         padding-right: 20px;
     }
 
+    /* Política */
+
     .termo {
         padding: 40px 20px 80px;
     }
+
+    /* Rodapé */
 
     footer {
         padding: 40px 20px;
@@ -2066,11 +2120,31 @@ body.saindo {
         grid-template-columns: 1fr;
         gap: 30px;
     }
+
+    .voltar-topo {
+        right: 16px;
+        bottom: 16px;
+    }
 }
 
 @media (max-width: 600px) {
 
+    /* Cardápio */
+
+    .conteudo-cardapio {
+        grid-template-columns: 1fr;
+    }
+
+    .cardapio-tabela {
+        padding: 30px 15px 60px;
+    }
+
+    .card {
+        padding: 25px 20px;
+    }
+
     /* Orçamento */
+
     .formulario-orcamento .linha {
         grid-template-columns: 1fr;
     }
@@ -2084,7 +2158,8 @@ body.saindo {
         width: 100%;
     }
 
-    /* NOVO */
+    /* Banner */
+
     .texto h1 {
         font-size: 32px;
     }
@@ -2094,9 +2169,13 @@ body.saindo {
         gap: 10px 25px;
     }
 
+    /* Delivery */
+
     .delivery .grade {
         grid-template-columns: 1fr;
     }
+
+    /* Fidelidade */
 
     .fidelidade .grade {
         gap: 12px;
@@ -2121,7 +2200,6 @@ body.saindo {
         grid-template-columns: 1fr;
     }
 
-    /* NOVO */
     .cardapio .categorias {
         flex-basis: 100%;
     }
@@ -2129,16 +2207,32 @@ body.saindo {
     .grade-galeria {
         grid-template-columns: 1fr;
     }
+
+    .card li {
+        gap: 8px;
+    }
+
+    .card .preco {
+        margin-left: 8px;
+    }
 }
 
 @media (max-width: 400px) {
 
-    .contato-grade {
-        padding: 30px 14px 60px;
+    /* Contato */
+
+    .conteudo-contato {
+        padding: 0 14px 60px;
     }
 
     .formulario-contato,
     .informacoes-contato {
         padding: 18px;
+    }
+
+    /* Outros formulários */
+
+    #formulario .cartao-fidelidade {
+        padding: 20px 14px;
     }
 }
