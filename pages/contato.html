@@ -49,6 +49,8 @@
        </header>
 
 <main>
+    <section class="conteudo-contato">
+
 <article class="formulario-contato">
     <h2>Fale com a gente</h2>
     
@@ -79,7 +81,9 @@
                 id="whatsapp"
                 name="whatsapp"
                 placeholder="(11) 90000-0000"
-                pattern="[0-9() -]+"
+                pattern="\(\d{2}\) \d{4,5}-\d{4}"
+                maxlength="15"
+                autocomplete="tel"
                 required>
         </div>
 
@@ -202,6 +206,7 @@
         </p>
     </div>
 </article>
+    </section>
 </main>
 
  <footer>
