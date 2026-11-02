@@ -1,4 +1,3 @@
-
 :root {
     /* Paleta */
     --preto: #000000;
@@ -1080,130 +1079,133 @@ body.lightbox-aberto {
     overflow: hidden;
 }
 
-
 /* =========================
    12. FEEDBACKS
 ========================= */
 
-.comentarios-google {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 25px;
-    max-width: var(--largura);
-    margin: 0 auto;
-    padding: 80px var(--margem-lateral) 120px;
-    align-items: stretch;
-}
+/* ---------- Base compartilhada (só o visual do card) ---------- */
 
-/* Título da seção */
-
-.comentarios-google > h2 {
-    grid-column: 1 / -1;
-    font-size: 28px;
-    margin: 0 0 10px;
-}
-
-/* Cartões de comentários */
-
-.comentarios-google > .comentarios {
+.comentarios {
     display: flex;
     flex-direction: column;
     min-width: 0;
-    min-height: 300px;
-    padding: 25px;
-    margin: 0;
-    border-radius: 12px;
-    background-color: var(--creme);
-    box-shadow: var(--sombra);
+    padding: 30px;
+    border: 1px solid var(--borda);
+    border-radius: 16px;
 }
-
-/* Nome */
 
 .comentarios h3 {
     color: var(--marrom);
-    font-size: 15px;
-    margin: 0 0 8px;
+    font-size: 16px;
 }
-
-/* Informações do avaliador */
-
-.comentarios .descricao {
-    color: var(--marrom-medio);
-    font-size: 12px;
-    margin: 0 0 10px;
-}
-
-/* Estrelas */
 
 .comentarios .estrela {
     display: block;
     color: var(--dourado);
-    margin-bottom: 12px;
+    font-size: 20px;
+    letter-spacing: 3px;
+    margin-bottom: 15px;
 }
 
-/* Texto da avaliação */
-
-.comentarios > p:not(.descricao) {
+.comentarios p {
     color: var(--marrom);
-    font-size: 13px;
-    line-height: 1.6;
+    font-size: 15px;
+    line-height: 1.7;
     margin: 0;
 }
 
-/* Botão de avaliar */
+/* ---------- Página inicial ---------- */
 
-.site-comentarios {
-    grid-column: 1 / -1;
-    margin-top: 15px;
+.comentarios-google {
+    max-width: var(--largura);
+    margin: 0 auto;
+    padding: 80px var(--margem-lateral) 120px;
 }
 
-/* Tablet */
+.comentarios-google .subtitulo,
+.comentarios-google .titulo {
+    text-align: center;
+}
 
-@media (max-width: 800px) {
-    .comentarios-google {
+.grade-google {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 30px;
+    align-items: stretch;
+}
+
+/* Na home o nome fica no final do card */
+
+.grade-google .comentarios h3 {
+    margin: auto 0 0;
+}
+
+.grade-google .comentarios p {
+    margin-bottom: 20px;
+}
+
+/* ---------- Página de feedbacks ---------- */
+
+.pagina-feedbacks .comentarios-google {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 30px;
+    align-items: stretch;
+}
+
+.pagina-feedbacks .comentarios-google > h2,
+.pagina-feedbacks .site-comentarios {
+    grid-column: 1 / -1;
+}
+
+.pagina-feedbacks .comentarios-google > h2 {
+    font-size: 28px;
+    margin: 0;
+}
+
+.pagina-feedbacks .site-comentarios {
+    margin-top: 10px;
+    text-align: center;
+}
+
+/* Na página de feedbacks o nome fica no topo */
+
+.pagina-feedbacks .comentarios h3 {
+    margin: 0 0 6px;
+}
+
+.pagina-feedbacks .comentarios .descricao {
+    color: var(--marrom-medio);
+    font-size: 12px;
+    margin: 0 0 12px;
+}
+
+/* ---------- Tablet ---------- */
+
+@media (max-width: 900px) {
+    .grade-google,
+    .pagina-feedbacks .comentarios-google {
         grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 18px;
+    }
+}
+
+/* ---------- Celular ---------- */
+
+@media (max-width: 600px) {
+    .comentarios-google {
         padding: 50px 20px 80px;
     }
 
-    .comentarios-google > .comentarios {
-        min-height: 0;
-    }
-    .grade-google {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-}
-
-/* Celular */
-
-@media (max-width: 480px) {
-    .comentarios-google {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 10px;
-        padding: 35px 12px 60px;
-    }
-
-    .comentarios-google > .comentarios {
-        padding: 14px;
-    }
-
-    .comentarios h3 {
-        font-size: 13px;
-    }
-
-    .comentarios .descricao {
-        font-size: 11px;
-    }
-
-    .comentarios > p:not(.descricao) {
-        font-size: 12px;
-        line-height: 1.5;
-    }
-     .grade-google {
+    .grade-google,
+    .pagina-feedbacks .comentarios-google {
         grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .comentarios {
+        padding: 22px;
     }
 }
-
 
 /* =========================
    13. FORMULÁRIOS
@@ -1278,6 +1280,7 @@ body.lightbox-aberto {
     border-color: var(--erro);
     box-shadow: 0 0 0 3px rgba(179, 64, 42, 0.15);
 }
+
 /* =========================
    CONTATO
 ========================= */
@@ -1964,24 +1967,18 @@ body.saindo {
 
 @media (max-width: 800px) {
 
-   /* Contato */
+    /* Contato */
 
-.conteudo-contato {
-    grid-template-columns: 1fr;
-    max-width: 600px;
-    gap: 24px;
-    padding: 40px 20px 80px;
-}
+    .conteudo-contato {
+        grid-template-columns: 1fr;
+        max-width: 600px;
+        gap: 24px;
+        padding: 40px 20px 80px;
+    }
 
-.conteudo-contato .formulario-contato,
-.conteudo-contato .informacoes-contato {
-    padding: 24px;
-}
-    /* Feedbacks */
-
-    .comentarios-pagina {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 15px;
+    .conteudo-contato .formulario-contato,
+    .conteudo-contato .informacoes-contato {
+        padding: 24px;
     }
 
     /* Orçamento */
@@ -2132,16 +2129,6 @@ body.saindo {
         padding: 50px 20px 80px;
     }
 
-    /* Feedbacks */
-
-    .comentarios-google {
-        padding: 50px 20px 80px;
-    }
-
-    .grade-google {
-        flex-direction: column;
-    }
-
     /* Galeria */
 
     .galeria-pagina {
@@ -2199,26 +2186,6 @@ body.saindo {
 
     .card {
         padding: 25px 20px;
-    }
-
-    /* Feedbacks: dois comentários lado a lado */
-
-    .comentarios-pagina {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 10px;
-    }
-
-    .comentarios {
-        min-height: 0;
-        padding: 18px;
-    }
-
-    .comentarios h3 {
-        font-size: 13px;
-    }
-
-    .comentarios p {
-        font-size: 12px;
     }
 
     /* Orçamento */
@@ -2301,147 +2268,12 @@ body.saindo {
 
 @media (max-width: 400px) {
 
-  .conteudo-contato {
-    padding: 30px 14px 60px;
-}
-
-.conteudo-contato .formulario-contato,
-.conteudo-contato .informacoes-contato {
-    padding: 18px;
-}
-    .comentarios-pagina {
-        gap: 8px;
+    .conteudo-contato {
+        padding: 30px 14px 60px;
     }
 
-    .comentarios {
-        padding: 14px;
-    }
-}
-
-/* =========================
-   AVALIAÇÕES DO GOOGLE
-========================= */
-
-.comentarios-google {
-    width: 100%;
-    max-width: 1400px;
-    margin: 0 auto;
-    padding: 80px 40px;
-}
-
-.comentarios-google .subtitulo,
-.comentarios-google .titulo {
-    text-align: center;
-}
-
-.comentarios-google .titulo {
-    margin-bottom: 40px;
-}
-
-.grade-google {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 25px;
-    width: 100%;
-}
-
-.comentarios {
-    display: flex;
-    flex-direction: column;
-    min-width: 0;
-    min-height: 300px;
-    padding: 30px;
-    background-color: var(--creme);
-    border: 1px solid var(--borda);
-    border-radius: 16px;
-}
-
-.comentarios .estrela {
-    color: var(--dourado);
-    font-size: 20px;
-    letter-spacing: 3px;
-    margin-bottom: 15px;
-}
-
-.comentarios p {
-    color: var(--marrom);
-    font-size: 15px;
-    line-height: 1.7;
-    margin-bottom: 20px;
-}
-
-.comentarios h3 {
-    color: var(--marrom);
-    font-size: 16px;
-    margin-top: auto;
-}
-
-/* TABLET */
-@media (max-width: 900px) {
-    .grade-google {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-}
-
-/* CELULAR */
-@media (max-width: 600px) {
-    .comentarios-google {
-        padding: 55px 20px;
-    }
-
-    .grade-google {
-        grid-template-columns: 1fr;
-    }
-
-    .comentarios {
-        min-height: auto;
-        padding: 22px;
-    }
-}
-/* CORREÇÃO DA LARGURA DAS AVALIAÇÕES */
-
-.comentarios-google {
-    width: 100%;
-    max-width: none;
-    padding: 80px 5%;
-    margin: 0;
-}
-
-.grade-google {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
-    width: 100%;
-    max-width: 1500px;
-    margin: 40px auto 0;
-}
-
-.comentarios {
-    width: 100%;
-    min-width: 0;
-    padding: 35px;
-    box-sizing: border-box;
-}
-
-/* TABLET */
-@media (max-width: 900px) {
-    .grade-google {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-/* CELULAR */
-@media (max-width: 600px) {
-    .comentarios-google {
-        padding: 50px 20px;
-    }
-
-    .grade-google {
-        grid-template-columns: 1fr;
-        gap: 20px;
-    }
-
-    .comentarios {
-        padding: 25px;
+    .conteudo-contato .formulario-contato,
+    .conteudo-contato .informacoes-contato {
+        padding: 18px;
     }
 }
