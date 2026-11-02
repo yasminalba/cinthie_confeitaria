@@ -1272,10 +1272,11 @@ body.lightbox-aberto {
     border-color: var(--erro);
     box-shadow: 0 0 0 3px rgba(179, 64, 42, 0.15);
 }
+/* =========================
+   CONTATO
+========================= */
 
-/* Contato */
-
-.contato-grade {
+.conteudo-contato {
     display: grid;
     grid-template-columns: 1.4fr 1fr;
     gap: 30px;
@@ -1286,19 +1287,19 @@ body.lightbox-aberto {
     padding: 80px var(--margem-lateral) 120px;
 }
 
-.formulario-contato,
-.informacoes-contato {
-    min-width: 0;
+.conteudo-contato .formulario-contato,
+.conteudo-contato .informacoes-contato {
     width: 100%;
+    min-width: 0;
     padding: 30px;
     border-radius: 20px;
 }
 
-.formulario-contato .campo {
+.conteudo-contato .campo {
     margin-bottom: 20px;
 }
 
-.formulario-contato .campo:last-child {
+.conteudo-contato .campo:last-child {
     margin-bottom: 0;
 }
 
@@ -1957,20 +1958,19 @@ body.saindo {
 
 @media (max-width: 800px) {
 
-    /* Contato */
+   /* Contato */
 
-    .contato-grade {
-        grid-template-columns: 1fr;
-        max-width: 600px;
-        gap: 24px;
-        padding: 40px 20px 80px;
-    }
+.conteudo-contato {
+    grid-template-columns: 1fr;
+    max-width: 600px;
+    gap: 24px;
+    padding: 40px 20px 80px;
+}
 
-    .formulario-contato,
-    .informacoes-contato {
-        padding: 24px;
-    }
-
+.conteudo-contato .formulario-contato,
+.conteudo-contato .informacoes-contato {
+    padding: 24px;
+}
     /* Feedbacks */
 
     .comentarios-pagina {
@@ -2295,15 +2295,14 @@ body.saindo {
 
 @media (max-width: 400px) {
 
-    .contato-grade {
-        padding: 30px 14px 60px;
-    }
+  .conteudo-contato {
+    padding: 30px 14px 60px;
+}
 
-    .formulario-contato,
-    .informacoes-contato {
-        padding: 18px;
-    }
-
+.conteudo-contato .formulario-contato,
+.conteudo-contato .informacoes-contato {
+    padding: 18px;
+}
     .comentarios-pagina {
         gap: 8px;
     }
