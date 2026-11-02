@@ -2324,17 +2324,17 @@ body.saindo {
 
 .comentarios-google {
     width: 100%;
-    max-width: var(--largura);
+    max-width: 1400px;
     margin: 0 auto;
-    padding: 80px var(--margem-lateral);
+    padding: 80px 40px;
 }
 
-.comentarios-google .subtitulo {
+.comentarios-google .subtitulo,
+.comentarios-google .titulo {
     text-align: center;
 }
 
 .comentarios-google .titulo {
-    text-align: center;
     margin-bottom: 40px;
 }
 
@@ -2348,10 +2348,9 @@ body.saindo {
 .comentarios {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     min-width: 0;
-    min-height: 280px;
-    padding: 25px;
+    min-height: 300px;
+    padding: 30px;
     background-color: var(--creme);
     border: 1px solid var(--borda);
     border-radius: 16px;
@@ -2377,22 +2376,21 @@ body.saindo {
     margin-top: auto;
 }
 
-/* TABLETS */
-@media (max-width: 800px) {
+/* TABLET */
+@media (max-width: 900px) {
     .grade-google {
         grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 }
 
-/* CELULARES */
-@media (max-width: 480px) {
+/* CELULAR */
+@media (max-width: 600px) {
     .comentarios-google {
         padding: 55px 20px;
     }
 
     .grade-google {
         grid-template-columns: 1fr;
-        gap: 18px;
     }
 
     .comentarios {
