@@ -2324,12 +2324,18 @@ body.saindo {
 
 .comentarios-google {
     width: 100%;
+    max-width: var(--largura);
+    margin: 0 auto;
     padding: 80px var(--margem-lateral);
 }
 
-.comentarios-google .subtitulo,
+.comentarios-google .subtitulo {
+    text-align: center;
+}
+
 .comentarios-google .titulo {
     text-align: center;
+    margin-bottom: 40px;
 }
 
 .grade-google {
@@ -2337,35 +2343,60 @@ body.saindo {
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 25px;
     width: 100%;
-    max-width: var(--largura);
-    margin: 40px auto 0;
 }
 
 .comentarios {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    padding: 25px;
     min-width: 0;
-    border-radius: 16px;
+    min-height: 280px;
+    padding: 25px;
     background-color: var(--creme);
+    border: 1px solid var(--borda);
+    border-radius: 16px;
 }
 
 .comentarios .estrela {
     color: var(--dourado);
     font-size: 20px;
+    letter-spacing: 3px;
     margin-bottom: 15px;
 }
 
 .comentarios p {
     color: var(--marrom);
-    font-size: 14px;
+    font-size: 15px;
     line-height: 1.7;
     margin-bottom: 20px;
 }
 
 .comentarios h3 {
     color: var(--marrom);
-    font-size: 15px;
+    font-size: 16px;
     margin-top: auto;
+}
+
+/* TABLETS */
+@media (max-width: 800px) {
+    .grade-google {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+/* CELULARES */
+@media (max-width: 480px) {
+    .comentarios-google {
+        padding: 55px 20px;
+    }
+
+    .grade-google {
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
+
+    .comentarios {
+        min-height: auto;
+        padding: 22px;
+    }
 }
