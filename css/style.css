@@ -1097,8 +1097,9 @@ body.lightbox-aberto {
 
 .comentarios-pagina {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 20px;
+    align-items: stretch;
 }
 
 .comentarios-pagina h2 {
@@ -1108,7 +1109,7 @@ body.lightbox-aberto {
 }
 
 .comentarios {
-    flex: 1;
+    min-width: 0;
     min-height: 300px;
     padding: 30px;
     border-radius: 12px;
@@ -1219,32 +1220,23 @@ body.lightbox-aberto {
 
 /* Contato */
 
-.conteudo-contato {
+.contato-grade {
     display: grid;
-    grid-template-columns: minmax(0, 500px) minmax(0, 380px);
-    justify-content: center;
-    align-items: start;
+    grid-template-columns: 1.4fr 1fr;
     gap: 30px;
+    align-items: start;
     width: 100%;
-    max-width: 1100px;
-    margin: 60px auto;
-    padding: 0 20px 100px;
+    max-width: var(--largura);
+    margin: 0 auto;
+    padding: 80px var(--margem-lateral) 120px;
 }
 
 .formulario-contato,
 .informacoes-contato {
-    width: 100%;
     min-width: 0;
+    width: 100%;
     padding: 30px;
     border-radius: 20px;
-    background-color: var(--creme);
-    box-shadow: var(--sombra-suave);
-}
-
-.formulario-contato h2,
-.informacoes-contato h2 {
-    font-size: 26px;
-    margin: 0 0 25px;
 }
 
 .formulario-contato .campo {
@@ -1829,7 +1821,6 @@ body.saindo {
 ========================= */
 
 @media (max-width: 1000px) {
-
     .texto h1,
     .texto h1 + p {
         white-space: normal;
@@ -1852,7 +1843,7 @@ body.saindo {
         margin-right: auto;
     }
 
-    .botao-whatsapp {
+    header nav > .botao-whatsapp {
         order: 2;
     }
 
@@ -1907,21 +1898,29 @@ body.saindo {
     }
 }
 
+/* Tablet */
+
 @media (max-width: 800px) {
 
     /* Contato */
 
-    .conteudo-contato {
+    .contato-grade {
         grid-template-columns: 1fr;
         max-width: 600px;
         gap: 24px;
-        margin: 40px auto;
-        padding: 0 20px 80px;
+        padding: 40px 20px 80px;
     }
 
     .formulario-contato,
     .informacoes-contato {
         padding: 24px;
+    }
+
+    /* Feedbacks */
+
+    .comentarios-pagina {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 15px;
     }
 
     /* Orçamento */
@@ -2082,10 +2081,6 @@ body.saindo {
         flex-direction: column;
     }
 
-    .comentarios-pagina {
-        grid-template-columns: 1fr;
-    }
-
     /* Galeria */
 
     .galeria-pagina {
@@ -2127,6 +2122,8 @@ body.saindo {
     }
 }
 
+/* Celular */
+
 @media (max-width: 600px) {
 
     /* Cardápio */
@@ -2141,6 +2138,26 @@ body.saindo {
 
     .card {
         padding: 25px 20px;
+    }
+
+    /* Feedbacks: dois comentários lado a lado */
+
+    .comentarios-pagina {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+    }
+
+    .comentarios {
+        min-height: 0;
+        padding: 18px;
+    }
+
+    .comentarios h3 {
+        font-size: 13px;
+    }
+
+    .comentarios p {
+        font-size: 12px;
     }
 
     /* Orçamento */
@@ -2182,6 +2199,8 @@ body.saindo {
     }
 }
 
+/* Celulares pequenos */
+
 @media (max-width: 480px) {
 
     .pagina-endereco .texto h1 {
@@ -2217,12 +2236,12 @@ body.saindo {
     }
 }
 
+/* Telas muito pequenas */
+
 @media (max-width: 400px) {
 
-    /* Contato */
-
-    .conteudo-contato {
-        padding: 0 14px 60px;
+    .contato-grade {
+        padding: 30px 14px 60px;
     }
 
     .formulario-contato,
@@ -2230,9 +2249,11 @@ body.saindo {
         padding: 18px;
     }
 
-    /* Outros formulários */
+    .comentarios-pagina {
+        gap: 8px;
+    }
 
-    #formulario .cartao-fidelidade {
-        padding: 20px 14px;
+    .comentarios {
+        padding: 14px;
     }
 }
