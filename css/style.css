@@ -2311,3 +2311,55 @@ body.saindo {
         padding: 14px;
     }
 }
+
+/* =========================
+   AVALIAÇÕES DO GOOGLE
+========================= */
+
+.comentarios-google {
+    width: 100%;
+    padding: 80px var(--margem-lateral);
+}
+
+.comentarios-google .subtitulo,
+.comentarios-google .titulo {
+    text-align: center;
+}
+
+.grade-google {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 25px;
+    width: 100%;
+    max-width: var(--largura);
+    margin: 40px auto 0;
+}
+
+.comentarios {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 25px;
+    min-width: 0;
+    border-radius: 16px;
+    background-color: var(--creme);
+}
+
+.comentarios .estrela {
+    color: var(--dourado);
+    font-size: 20px;
+    margin-bottom: 15px;
+}
+
+.comentarios p {
+    color: var(--marrom);
+    font-size: 14px;
+    line-height: 1.7;
+    margin-bottom: 20px;
+}
+
+.comentarios h3 {
+    color: var(--marrom);
+    font-size: 15px;
+    margin-top: auto;
+}
