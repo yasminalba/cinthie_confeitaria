@@ -94,7 +94,7 @@ O `js/script.js` responde a eventos do usuário (clique, rolagem, digitação, t
 - **Busca no cardápio:** filtra os produtos enquanto a pessoa digita.
 - **Cartão de fidelidade:** os selos podem ser marcados com clique ou teclado.
 - **Galeria com lightbox:** ao clicar numa foto, ela abre ampliada.
-- **Formulários:** máscara de telefone e contador de caracteres no orçamento.
+- **Formulários:** máscara de telefone e contador de caracteres no orçamento. Os formulários de contato e de orçamento enviam as mensagens pelo [FormSubmit](https://formsubmit.co/) para o Gmail da confeitaria (`confeitariacinthie@gmail.com`), sem recarregar a página, e mostram uma mensagem de confirmação na própria tela.
 - **Efeitos visuais:** elementos que aparecem ao rolar a página e transição suave entre páginas (respeitando a preferência de movimento reduzido do usuário).
 
 ### Pesquisa de leiaute e testes de identidade visual
@@ -173,11 +173,60 @@ O resultado sai mais rápido, mas fica genérico e pode conter erros de layout, 
 
 ## 6. Validação W3C
 
-O site foi validado no [W3C Markup Validator](https://validator.w3.org/) e no [CSS Validation Service](https://jigsaw.w3.org/css-validator/), sem erros.
+Todas as 12 páginas do site foram validadas no [W3C Markup Validator](https://validator.w3.org/), e o CSS foi validado no [CSS Validation Service](https://jigsaw.w3.org/css-validator/). O resultado foi **nenhum erro e nenhum aviso** em todas as páginas.
 
-**HTML:**
+**HTML (página inicial):**
 
-![Validação W3C do HTML](assets/imagens/validador.png)
+![Validação W3C do HTML - Início](assets/imagens/validador_index.png)
+
+<details>
+<summary>Ver a validação das outras 11 páginas</summary>
+
+**Quem somos**
+
+![Validação W3C - Quem somos](assets/imagens/validador_quemsomos.png)
+
+**Cardápio**
+
+![Validação W3C - Cardápio](assets/imagens/validador_cardapio.png)
+
+**Delivery**
+
+![Validação W3C - Delivery](assets/imagens/validador_delivery.png)
+
+**Endereço**
+
+![Validação W3C - Endereço](assets/imagens/validador_endereco.png)
+
+**Galeria**
+
+![Validação W3C - Galeria](assets/imagens/validador_galeria.png)
+
+**Feedbacks**
+
+![Validação W3C - Feedbacks](assets/imagens/validador_feedbacks.png)
+
+**Selo de fidelidade**
+
+![Validação W3C - Selo de fidelidade](assets/imagens/validador_fidelidade.png)
+
+**Orçamento**
+
+![Validação W3C - Orçamento](assets/imagens/validador_orcamento.png)
+
+**Contato**
+
+![Validação W3C - Contato](assets/imagens/validador_contato.png)
+
+**Política de privacidade**
+
+![Validação W3C - Política de privacidade](assets/imagens/validador_policaprivacidade.png)
+
+**Termos e condições**
+
+![Validação W3C - Termos e condições](assets/imagens/validador_termos.png)
+
+</details>
 
 **CSS:**
 
