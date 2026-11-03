@@ -5,8 +5,6 @@ Entrega 1 (HTML) e Entrega 2 (CSS e JavaScript).
 
 🔗 **Site hospedado:** [yasminalba.github.io/cinthie_confeitaria](https://yasminalba.github.io/cinthie_confeitaria/)
 
-**Slides da apresentação:** [apresentacao/nome-do-arquivo.pptx](apresentacao/slides cinthie.pptx)
-
 ## 1. Nomes dos alunos
 
 - Ryan Everton Andrade Simões — RGM: 47647663 - GitHub: 8enn7
