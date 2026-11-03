@@ -1,4 +1,3 @@
-
 (function () {
   'use strict';
 
@@ -690,8 +689,53 @@
       });
     }
 
-    form.addEventListener('submit', function () {
-      mostrarStatus('Se o seu aplicativo de e-mail abriu, é só confirmar o envio. Retornamos pelo Whatsapp em até 24h.');
+  }
+
+  function iniciarEnvioFormularios() {
+    var formularios = document.querySelectorAll('form[action*="formsubmit.co"]');
+
+    Array.prototype.forEach.call(formularios, function (form) {
+      var status = form.querySelector('.status-formulario');
+      var botao = form.querySelector('button[type="submit"]');
+      if (!status || !window.fetch) return;
+
+      var sucesso = form.id === 'form-orcamento'
+        ? 'Pedido de orçamento enviado! Retornamos pelo Whatsapp em até 24h.'
+        : 'Mensagem enviada! Em breve entraremos em contato.';
+
+      form.addEventListener('submit', function (evento) {
+        evento.preventDefault();
+
+        var textoBotao = botao ? botao.textContent : '';
+        if (botao) {
+          botao.disabled = true;
+          botao.textContent = 'Enviando...';
+        }
+
+        var url = form.action.replace('formsubmit.co/', 'formsubmit.co/ajax/');
+
+        fetch(url, {
+          method: 'POST',
+          headers: { Accept: 'application/json' },
+          body: new FormData(form)
+        })
+          .then(function (resposta) {
+            if (!resposta.ok) throw new Error('falha');
+            form.reset();
+            status.textContent = sucesso;
+          })
+          .catch(function () {
+            status.textContent = 'Não foi possível enviar agora. Tente novamente ou fale conosco pelo Whatsapp.';
+          })
+          .then(function () {
+            status.hidden = false;
+            if (botao) {
+              botao.disabled = false;
+              botao.textContent = textoBotao;
+            }
+            status.scrollIntoView({ block: 'center' });
+          });
+      });
     });
   }
 
@@ -711,6 +755,7 @@
   iniciarLightbox();
   iniciarFormularios();
   iniciarOrcamento();
+  iniciarEnvioFormularios();
 
   processarRolagem();
 })();
