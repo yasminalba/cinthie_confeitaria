@@ -44,7 +44,7 @@ Forma de contato utilizada: visita presencial.
 
 ### Estrutura do site
 
-O site tem **11 páginas HTML** interligadas por um menu de navegação consistente:
+O site tem **12 páginas HTML** interligadas por um menu de navegação consistente:
 
 | Página | Arquivo | Conteúdo |
 |---|---|---|
