@@ -5,7 +5,7 @@ Entrega 1 (HTML) e Entrega 2 (CSS e JavaScript).
 
 🔗 **Site hospedado:** [yasminalba.github.io/cinthie_confeitaria](https://yasminalba.github.io/cinthie_confeitaria/)
 
-**Slides da apresentação:** [apresentacao/nome-do-arquivo.pptx](apresentacao/slides_cinthie.pptx)
+**Slides da apresentação:** [apresentacao/nome-do-arquivo.pptx](apresentacao/slides cinthie.pptx)
 
 ## 1. Nomes dos alunos
 
